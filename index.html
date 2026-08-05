@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nereus — AI tutor</title>
+    <meta name="description" content="Nereus: AI-тютор, который строит дорожную карту от начала до уверенных практических навыков. В разработке.">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <a class="skip-link" href="#content">Перейти к содержимому</a>
+
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="#" class="logo" aria-label="Nereus — на главную">
+                <span class="logo-symbol">∿</span>
+                <span class="logo-text">Nereus</span>
+            </a>
+            <nav class="nav" aria-label="Главная навигация">
+                <ul class="nav__list">
+                    <li><a href="#about">О продукте</a></li>
+                    <li><a href="#how-it-works">Как это работает</a></li>
+                    <li><a href="#features">Возможности</a></li>
+                    <li><a href="#status">Статус</a></li>
+                    <li><a href="#notify">Скоро</a></li>
+                </ul>
+            </nav>
+            <button type="button" class="menu-toggle" aria-label="Меню" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <main id="content">
+        <!-- HERO -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero__badge">
+                    <span class="badge-dot"></span>
+                    <span>В разработке</span>
+                </div>
+                <h1 class="hero__title">
+                    <span class="hero__line">AI-тютор</span>
+                    <span class="hero__line hero__line--accent">от дорожной карты</span>
+                    <span class="hero__line">к уверенным навыками</span>
+                </h1>
+                <p class="hero__subtitle">
+                    Nereus строит персонализированную дорожную карту обучения,
+                    задаёт практические упражнения и проверяет знания — всё через
+                    диалог с ИИ. Скоро доступен.
+                </p>
+                <div class="hero__actions">
+                    <a href="#notify" class="btn btn--primary">Скоро в деле</a>
+                    <a href="https://github.com/nereuslabs/Nereus" class="btn btn--ghost" target="_blank" rel="noopener">
+                        <span class="icon">𝝍</span>
+                        GitHub
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section class="section section--alt" id="about">
+            <div class="container">
+                <h2 class="section__title">Что такое Nereus?</h2>
+                <p class="section__lead">
+                    Представьте себе персонального репетитора, который:
+                </p>
+                <div class="grid grid--3">
+                    <div class="card">
+                        <div class="card__icon">🗺️</div>
+                        <h3 class="card__title">Строит дорожную карту</h3>
+                        <p class="card__text">Разбирает ваши цели и уровень,
+                            создавая пошаговый план обучения от основ до продвинутых тем.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card__icon">📚</div>
+                        <h3 class="card__title">Даёт материалы</h3>
+                        <p class="card__text">На каждом шаге выдаёт консольный материал,
+                            практические задания и упражнения с RAG-подкреплением.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card__icon">✅</div>
+                        <h3 class="card__title">Проверяет и повторяет</h3>
+                        <p class="card__text">Экзаменатор оценивает ваши ответы.
+                            Слабые места автоматически попадаются в повторение.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HOW IT WORKS -->
+        <section class="section" id="how-it-works">
+            <div class="container">
+                <h2 class="section__title">Как это работает</h2>
+                <p class="section__lead">
+                    Три агента, один цикл. LangGraph решает, что делать дальше.
+                </p>
+
+                <div class="flow-diagram">
+                    <div class="flow-diagram__row">
+                        <div class="agent-node agent-node--coach">
+                            <div class="agent-node__badge">1</div>
+                            <div class="agent-node__name">Coach</div>
+                            <div class="agent-node__desc">Строит Roadmap</div>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="agent-node agent-node--tutor">
+                            <div class="agent-node__badge">2</div>
+                            <div class="agent-node__name">Tutor</div>
+                            <div class="agent-node__desc">Материал + задание</div>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="agent-node agent-node--examiner">
+                            <div class="agent-node__badge">3</div>
+                            <div class="agent-node__name">Examiner</div>
+                            <div class="agent-node__desc">Оценка + verdict</div>
+                        </div>
+                    </div>
+                    <div class="flow-diagram__loop">
+                        <span>PASS → следующая тема</span>
+                        <span class="loop-arrow">↺</span>
+                        <span>RETRY → повторить тему</span>
+                    </div>
+                </div>
+
+                <div class="code-block">
+                    <pre><code class="language-python"><span class="c"># main.py — CLI / Chainlit UI</span>
+<span class="kn">from</span> nereus.core.factory <span class="kn">import</span> build_nereus_graph
+
+graph = build_nereus_graph(interactive=<span class="mi">True</span>)
+<span class="nb">print</span>(graph.invoke({<span class="s2">"user_profile"</span>: profile}, config))
+</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- FEATURES -->
+        <section class="section section--alt" id="features">
+            <div class="container">
+                <h2 class="section__title">Возможности</h2>
+
+                <div class="features-list">
+                    <div class="feature">
+                        <span class="feature__tag">RAG</span>
+                        <h3 class="feature__title">Retrieval-Augmented Learning</h3>
+                        <p class="feature__text">ChromaDB-хранилище с эмбеддингами
+                            подкрепляет материалы и задания актуальными источниками.</p>
+                    </div>
+                    <div class="feature">
+                        <span class="feature__tag">offline</span>
+                        <h3 class="feature__title">Работает без сети</h3>
+                        <p class="feature__text">Stub-провайдеры позволяют запускать
+                            полный цикл без Ollama и без доступа в интернет — идеально для
+                            CI/CD и демо.</p>
+                    </div>
+                    <div class="feature">
+                        <span class="feature__tag">memory</span>
+                        <h3 class="feature__title">Память сессии</h3>
+                        <p class="feature__text">Агрегация слабых мест, session_brief-
+                            преамбула, dump/load for persistent checkpoints.</p>
+                    </div>
+                    <div class="feature">
+                        <span class="feature__tag">langgraph</span>
+                        <h3 class="feature__title">LangGraph оркестрация</h3>
+                        <p class="feature__text">Условный роутинг PASS/RETRY/END,
+                            human-in-the-loop через interrupt, checkpointer для resume.</p>
+                    </div>
+                </div>
+
+                <div class="tech-stack">
+                    <span class="tech-item">Python 3.11+</span>
+                    <span class="tech-item">LangGraph</span>
+                    <span class="tech-item">Ollama</span>
+                    <span class="tech-item">ChromaDB</span>
+                    <span class="tech-item">Chainlit</span>
+                    <span class="tech-item">Docker</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- STATUS -->
+        <section class="section" id="status">
+            <div class="container">
+                <h2 class="section__title">Статус разработки</h2>
+                <p class="section__lead">MVP 1.0 — активная разработка</p>
+
+                <div class="roadmap-steps">
+                    <div class="step completed">
+                        <div class="step__num">1</div>
+                        <div class="step__info">
+                            <span class="step__label">Базовый автомат-агент</span>
+                            <span class="step__status">Готово</span>
+                        </div>
+                    </div>
+                    <div class="step completed">
+                        <div class="step__num">2</div>
+                        <div class="step__info">
+                            <span class="step__label">Абстракция LLM-провайдера</span>
+                            <span class="step__status">Готово</span>
+                        </div>
+                    </div>
+                    <div class="step completed">
+                        <div class="step__num">3</div>
+                        <div class="step__info">
+                            <span class="step__label">LLM runtime, схемы, память</span>
+                            <span class="step__status">Готово</span>
+                        </div>
+                    </div>
+                    <div class="step completed">
+                        <div class="step__num">4</div>
+                        <div class="step__info">
+                            <span class="step__label">RAG-конвейер (ChromaDB)</span>
+                            <span class="step__status">Готово</span>
+                        </div>
+                    </div>
+                    <div class="step in-progress">
+                        <div class="step__num">5</div>
+                        <div class="step__info">
+                            <span class="step__label">Chainlit Web UI</span>
+                            <span class="step__status">В работе</span>
+                        </div>
+                    </div>
+                    <div class="step pending">
+                        <div class="step__num">6</div>
+                        <div class="step__info">
+                            <span class="step__label">Персистентные чекпоинты</span>
+                            <span class="step__status">В планах</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NOTIFY -->
+        <section class="section section--alt" id="notify">
+            <div class="container">
+                <div class="notify">
+                    <h2 class="notify__title">Будьте первым</h2>
+                    <p class="notify__text">
+                        Оставьте email и мы сообщим, как только Nereus станет
+                        доступен для тестирования.
+                    </p>
+                    <form class="notify__form" id="notify-form">
+                        <input type="email"
+                               name="email"
+                               placeholder="you@example.com"
+                               autocomplete="email"
+                               required
+                               aria-label="Ваш email">
+                        <button type="submit" class="btn btn--primary">Сообщить</button>
+                    </form>
+                    <p class="notify__hint">
+                        Или посмотрите на
+                        <a href="https://github.com/nereuslabs/Nereus" target="_blank" rel="noopener">GitHub</a>.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="footer__brand">
+                <span class="logo-symbol">∿</span>
+                <span>Nereus</span>
+            </div>
+            <p class="footer__text">
+                © 2026 Nereus Labs. MIT License.
+            </p>
+            <div class="footer__links">
+                <a href="https://github.com/nereuslabs/Nereus" target="_blank" rel="noopener" aria-label="GitHub">𝝍</a>
+            </div>
+        </div>
+    </footer>
+
+    <div class="toast" id="toast" role="alert" aria-live="polite">
+        Спасибо! Мы свяжемся с вами, когда Nereus станет доступен.
+    </div>
+
+    <script src="/js/main.js" defer></script>
+</body>
+</html>
