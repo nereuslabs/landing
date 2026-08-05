@@ -9,11 +9,21 @@
         menuToggle.addEventListener("click", () => {
             const expanded = menuToggle.getAttribute("aria-expanded") === "true";
             menuToggle.setAttribute("aria-expanded", !expanded);
-            nav.style.display = expanded ? "none" : "flex";
+            nav.classList.toggle("open", !expanded);
         });
 
+        /* Close menu when clicking a link (mobile) */
+        nav.addEventListener("click", (e) => {
+            if (e.target.tagName === "A") {
+                menuToggle.setAttribute("aria-expanded", "false");
+                nav.classList.remove("open");
+            }
+        });
+
+        /* Reset on resize */
         window.addEventListener("resize", () => {
             if (window.innerWidth >= 768) {
+                nav.classList.remove("open");
                 nav.style.display = "";
                 menuToggle.setAttribute("aria-expanded", "false");
             }
@@ -41,7 +51,7 @@
         setTimeout(() => toast.classList.remove("toast--show"), 3000);
     }
 
-    /* —— Notify form (stub without backend) —— */
+    /* —— Notify form —— */
     const form = document.getElementById("notify-form");
     if (form) {
         form.addEventListener("submit", function (e) {
@@ -56,7 +66,8 @@
 
     /* —— Reveal on scroll —— */
     const revealElements = document.querySelectorAll(
-        ".agent-node, .feature, .step, .chat-preview, .notify, .hero__badge"
+        ".agent-cycle, .step-card, .feature-card, .tech-item, " +
+        ".flow-node, .flow-connector, .flow-loop, .timeline__item, .cta-block, .hero__badge"
     );
 
     const revealObserver = new IntersectionObserver(
