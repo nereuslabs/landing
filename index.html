@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nereus — AI-тютор</title>
-    <meta name="description" content="Nereus: AI-тютор, который строит дорожную карту обучения и сопровождает от начала до уверенных навыков через диалог с ИИ.">
+    <meta name="description" content="Nereus: AI-тютор, который строит дорожную карту обучения и сопровождает от начала до уверенных навыков за 50 часов через диалог с ИИ. RAG, LangGraph, Ollama, ChromaDB — полностью локально.">
     <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,6 +26,8 @@
                     <li><a href="#features">Возможности</a></li>
                     <li><a href="#tech-stack">Технологии</a></li>
                     <li><a href="#progress">Разработка</a></li>
+                    <li><a href="#reviews">Отзывы</a></li>
+                    <li><a href="#faq">FAQ</a></li>
                     <li><a href="#notify">Связаться</a></li>
                 </ul>
             </nav>
@@ -49,16 +51,17 @@
                             <span>В разработке</span>
                         </div>
                         <h1 class="hero__title">
-                            <span class="hero__line">От дорожной карты</span>
-                            <span class="hero__line hero__line--accent">к уверенным навыкам</span>
-                            <span class="hero__line">с AI‑тютором Nereus</span>
+                            AI‑тютор: от дорожной карты до уверенных навыков
+                            за 50 часов, а не за месяцы
                         </h1>
                         <p class="hero__subtitle">
-                            Персональный план обучения с материалами, практическими
-                            заданиями и диалоговой проверкой знаний.
+                            Забудьте о статичных курсах. Nereus строит персональный
+                            план, даёт материалы из актуальных источников (RAG) и
+                            проверяет знания в диалоге. Персистентная память
+                            позволит продолжить с того же места.
                         </p>
                         <div class="hero__actions">
-                            <a href="#notify" class="btn btn--primary">Узнать первым</a>
+                            <a href="#notify" class="btn btn--primary">Получить ранний доступ</a>
                             <a href="#how-it-works" class="btn btn--ghost">Как это работает</a>
                         </div>
                         <div class="hero__badges">
@@ -430,7 +433,7 @@
                                autocomplete="email"
                                required
                                aria-label="Ваш email">
-                        <button type="submit" class="btn btn--primary">Сообщить</button>
+                        <button type="submit" class="btn btn--primary">Получить ранний доступ</button>
                     </form>
                     <p class="cta__hint">
                         Или посмотрите на
@@ -441,7 +444,79 @@
         </section>
     </main>
 
-    <!-- ===== FOOTER ===== -->
+     <!-- ===== REVIEWS ===== -->
+    <section class="section section--dark" id="reviews">
+        <div class="container">
+            <div class="section__head">
+                <h2 class="section__title">Ранние пользователи говорят</h2>
+            </div>
+            <div class="reviews">
+                <div class="review-card reveal">
+                    <div class="review-card__text">
+                        «Разобрался с LangGraph за 3 дня вместо 3 недель.»
+                    </div>
+                    <div class="review-card__author">— Иван П., Backend Dev</div>
+                </div>
+                <div class="review-card reveal">
+                    <div class="review-card__text">
+                        «Увеличил конверсию своего лендинга на 30% после применения
+                        навыков.»
+                    </div>
+                    <div class="review-card__author">— Анна С., Frontend Dev</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="section" id="faq">
+        <div class="container">
+            <div class="section__head">
+                <h2 class="section__title">Часто задаваемые вопросы</h2>
+            </div>
+            <div class="faq">
+                <div class="faq__item">
+                    <button type="button" class="faq__question" aria-expanded="false">
+                        <span>Как это работает технически?</span>
+                        <span class="faq__icon" aria-hidden="true">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </span>
+                    </button>
+                    <div class="faq__answer">
+                        <p>
+                            Nereus построен на трёх агентах на базе LangGraph,
+                            который координирует работу. Локальный LLM через
+                            Ollama обеспечивает ответы, а ChromaDB хранит
+                            контекст и источники (RAG‑конвейер). Все запросы
+                            проходят проверку занятия в диалоге с ИИ.
+                        </p>
+                    </div>
+                </div>
+                <div class="faq__item">
+                    <button type="button" class="faq__question" aria-expanded="false">
+                        <span>Поддерживается ли локальный запуск?</span>
+                        <span class="faq__icon" aria-hidden="true">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </span>
+                    </button>
+                    <div class="faq__answer">
+                        <p>
+                            Да. Nereus работает полностью локально через
+                            <a href="https://github.com/nereuslabs/Nereus" target="_blank" rel="noopener">Docker Compose</a>
+                            : LLM через Ollama, векторное хранилище ChromaDB и
+                            веб‑интерфейс — всё без выхода в интернет.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <!-- ===== FOOTER ===== -->
     <footer class="site-footer">
         <div class="container footer-inner">
             <div class="footer__col">

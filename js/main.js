@@ -60,14 +60,47 @@
             if (input && input.value.trim()) {
                 showToast("Спасибо! Мы свяжемся с вами, когда Nereus станет доступен.");
                 this.reset();
+
+                const ctaBlock = this.closest(".cta-block");
+                const thanks = document.createElement("div");
+                thanks.className = "cta__thanks";
+                thanks.innerHTML =
+                    '<p class="cta__thanks-text">Спасибо за подписку!</p>' +
+                    '<p class="cta__thanks-sub">Мы сообщим, как только Nereus станет доступен.</p>';
+
+                const ctaTitle = ctaBlock.querySelector(".cta__title");
+                const ctaText = ctaBlock.querySelector(".cta__text");
+                const ctaHint = ctaBlock.querySelector(".cta__hint");
+
+                if (ctaTitle) ctaTitle.style.display = "none";
+                if (ctaText) ctaText.style.display = "none";
+                if (ctaHint) ctaHint.style.display = "none";
+
+                this.style.display = "none";
+                ctaBlock.appendChild(thanks);
             }
         });
     }
 
+    /* —— FAQ accordion —— */
+    const faqQuestions = document.querySelectorAll(".faq__question");
+    faqQuestions.forEach((btn) => {
+        btn.addEventListener("click", function () {
+            const expanded = this.getAttribute("aria-expanded") === "true";
+            this.setAttribute("aria-expanded", !expanded);
+
+            const answer = this.nextElementSibling;
+            if (answer && answer.classList.contains("faq__answer")) {
+                answer.classList.toggle("faq__answer--open", !expanded);
+            }
+        });
+    });
+
     /* —— Reveal on scroll —— */
     const revealElements = document.querySelectorAll(
         ".agent-cycle, .step-card, .feature-card, .tech-item, " +
-        ".flow-node, .flow-connector, .flow-loop, .timeline__item, .cta-block, .hero__badge"
+        ".flow-node, .flow-connector, .flow-loop, .timeline__item, .cta-block, .hero__badge, " +
+        ".review-card, .faq__item"
     );
 
     const revealObserver = new IntersectionObserver(
