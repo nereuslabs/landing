@@ -158,20 +158,27 @@ button, input {
 .menu-toggle {
     display: none;
     flex-direction: column;
-    gap: 3.5px;
+    gap: 4px;
     background: transparent;
     border: none;
     cursor: pointer;
-    padding: 0.25rem;
+    padding: 0.4rem;
+    z-index: 60;
 }
 
-.menu-toggle span {
+.menu-line {
     display: block;
     width: 22px;
     height: 1.5px;
     background: var(--text);
     border-radius: 2px;
     transition: all 0.2s ease;
+}
+
+/* Fix: menu-toggle must never render above the header.
+   It is hidden on desktop via display:none and only toggled in the mobile media query. */
+.site-header .menu-toggle {
+    display: none;
 }
 
 /* ===== Hero ===== */
@@ -328,8 +335,22 @@ button, input {
     font-weight: 600;
     text-align: center;
     color: var(--heading);
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.75rem;
     letter-spacing: -0.01em;
+}
+
+.section__lead {
+    text-align: center;
+    color: var(--text);
+    max-width: 42rem;
+    margin-inline: auto;
+    margin-bottom: 3rem;
+    font-weight: 300;
+    font-size: 1.05rem;
+}
+
+.section__head + .section__lead {
+    margin-top: -1.5rem;
 }
 
 /* ===== Flow diagram ===== */
@@ -408,41 +429,84 @@ button, input {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
+    gap: 1.5rem;
     margin-top: 1.5rem;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
+    flex-wrap: wrap;
+}
+
+.loop-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
     color: var(--text);
 }
 
-.loop-arrow {
+.loop-label {
     font-family: "JetBrains Mono", monospace;
-    font-size: 1rem;
+    font-weight: 700;
     color: var(--accent);
 }
 
-/* ===== Code block ===== */
+.loop-separator {
+    width: 4px;
+    height: 4px;
+    background: var(--text-dim);
+    border-radius: 50%;
+}
 
-.code-block {
-    background: #f8f8f2;
+/* ===== Stack diagram ===== */
+
+.stack-diagram {
+    max-width: 36rem;
+    margin-inline: auto;
+    margin-block: 2rem;
+    text-align: center;
+}
+
+.stack-diagram__row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.stack-layer {
+    background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: var(--radius);
-    margin-top: 2rem;
-    overflow: hidden;
+    padding: 0.75rem 1rem;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.2s ease;
 }
 
-.code-block pre {
-    padding: 1.25rem;
-    overflow-x: auto;
-    font-family: "JetBrains Mono", "Fira Code", monospace;
-    font-size: 0.85rem;
-    line-height: 1.6;
+.stack-layer:hover {
+    transform: translateX(4px);
+    border-color: var(--accent);
+    box-shadow: var(--shadow-md);
 }
 
-.c  { color: #9db0b3; }
-.kn { color: var(--purple); }
-.nb { color: var(--cyan); }
-.s2 { color: var(--green); }
-.mi { color: var(--orange); }
+.stack-layer__name {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--text-dim);
+    margin-bottom: 0.15rem;
+}
+
+.stack-layer__tech {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--heading);
+}
+
+.stack-diagram__note {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    margin-top: 1rem;
+    font-style: italic;
+}
 
 /* ===== Features ===== */
 

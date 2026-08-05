@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nereus — AI-тютор</title>
-    <meta name="description" content="Nereus: AI-тютор, который строит дорожную карту обучения и проводит вас от основ до уверенных навыков. Скоро в релизе.">
+    <meta name="description" content="Nereus: AI-тютор, который строит дорожную карту обучения и сопровождает от начала до уверенных навыков. Скоро в релизе.">
     <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500@600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
@@ -24,11 +24,13 @@
                     <li><a href="#how-it-works">Как это работает</a></li>
                     <li><a href="#features">Возможности</a></li>
                     <li><a href="#status">Разработка</a></li>
-                    <li><a href="#notify">Скоро</a></li>
+                    <li><a href="#notify">Связаться</a></li>
                 </ul>
             </nav>
-            <button type="button" class="menu-toggle" aria-label="Меню" aria-expanded="false">
-                <span></span><span></span><span></span>
+            <button type="button" class="menu-toggle" aria-label="Открыть меню" aria-expanded="false">
+                <span class="menu-line"></span>
+                <span class="menu-line"></span>
+                <span class="menu-line"></span>
             </button>
         </div>
     </header>
@@ -47,13 +49,18 @@
                     <span class="hero__line">к уверенным навыкам</span>
                 </h1>
                 <p class="hero__subtitle">
-                    Nereus строит персонализированную дорожную карту обучения,
-                    сопровождает вас материалами и проверяет прогресс.
+                    Nereus строит для вас персональный план обучения, сопровождая
+                    каждую тему материалами, практическими заданиями и проверкой
+                    знаний. Скоро — в ваших руках.
                 </p>
                 <div class="hero__actions">
-                    <a href="#notify" class="btn btn--primary">Скоро в деле</a>
+                    <a href="#notify" class="btn btn--primary">Узнать первым</a>
                     <a href="https://github.com/nereuslabs/Nereus" class="btn btn--ghost" target="_blank" rel="noopener">
-                        <svg class="icon icon--github" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-5-4v-4.5c0-2 1-3.5 2.5-3.5 1.5 0 3 .5 3.5 2.5.5 2 .5 3 .1 3.5-1.5-.3-3 .3-3.5 2.5v4c0 1.5 1 2.5 3 2 2 0 3.5-.5 4-2 .5-2 1.5-3 3-3 1.5 0 2.5 1.5 2.5 3v4c0 2-2 4-5 4-2.5 0-4.5-1.5-5-3-1 0-2 .3-2.5-.5z"/><circle cx="9" cy="9" r="2"/><path d="M9 5C9 3 10 2 12 2c2 0 3 1 3 3"/></svg>
+                        <svg class="icon icon--github" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 19c-5 1.5-5-2.5-5-4v-4.5c0-2 1-3.5 2.5-3.5 1.5 0 3 .5 3.5 2.5.5 2 .5 3 .1 3.5-1.5-.3-3-.3-3.5-.5-2 0-3.5.5-3.5 2.5v4c0 2 1.5 3.5 3.5 3.5 2 0 3.5-.5 4-2 .5-2 .5-3 .1-3.5-1.5-.3-3-.3-3.5-.5-2 0-3.5.5-3.5 2.5v4c0 2-2 4-5 4z"/>
+                            <circle cx="9" cy="9" r="2"/>
+                            <path d="M9 5C9 3 10 2 12 2c2 0 3 1 3 3"/>
+                        </svg>
                         GitHub
                     </a>
                 </div>
@@ -63,7 +70,12 @@
         <!-- HOW IT WORKS -->
         <section class="section" id="how-it-works">
             <div class="container">
-                <h2 class="section__title">Как это работает</h2>
+                <div class="section__head">
+                    <h2 class="section__title">Как это работает</h2>
+                    <p class="section__lead">
+                        Три агента — один цикл. LangGraph решает, что делать дальше.
+                    </p>
+                </div>
 
                 <div class="flow-diagram">
                     <div class="flow-diagram__row">
@@ -72,13 +84,17 @@
                             <div class="agent-node__name">Coach</div>
                             <div class="agent-node__desc">Строит дорожную карту</div>
                         </div>
-                        <svg class="flow-arrow" width="24" height="16" viewBox="0 0 24 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 8h20"/><polygon points="18,4 22,8 18,12"/></polygon></svg>
+                        <svg class="flow-arrow" width="24" height="16" viewBox="0 0 24 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                            <path d="M2 8h20"/><polygon points="18,4 22,8 18,12"/>
+                        </svg>
                         <div class="agent-node agent-node--2">
                             <div class="agent-node__badge">2</div>
                             <div class="agent-node__name">Tutor</div>
                             <div class="agent-node__desc">Материал и задание</div>
                         </div>
-                        <svg class="flow-arrow" width="24" height="16" viewBox="0 0 24 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 8h20"/><polygon points="18,4 22,8 18,12"/></polygon></svg>
+                        <svg class="flow-arrow" width="24" height="16" viewBox="0 0 24 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                            <path d="M2 8h20"/><polygon points="18,4 22,8 18,12"/>
+                        </svg>
                         <div class="agent-node agent-node--3">
                             <div class="agent-node__badge">3</div>
                             <div class="agent-node__name">Examiner</div>
@@ -86,19 +102,34 @@
                         </div>
                     </div>
                     <div class="flow-diagram__loop">
-                        <span>PASS — следующая тема</span>
-                        <span class="loop-arrow">RETRY</span>
-                        <span>повторить тему</span>
+                        <span class="loop-item"><span class="loop-label">PASS</span> — следующая тема</span>
+                        <span class="loop-separator"></span>
+                        <span class="loop-item"><span class="loop-label">RETRY</span> — повторить тему</span>
                     </div>
                 </div>
 
-                <div class="code-block">
-                    <pre><code><span class="c"># main.py — запуск автоматического ученика</span>
-<span class="kn">from</span> nereus.core.factory <span class="kn">import</span> build_nereus_graph
-
-graph = build_nereus_graph(interactive=<span class="mi">True</span>)
-result = graph.invoke({<span class="s2">"user_profile"</span>: profile}, config)
-</code></pre>
+                <div class="stack-diagram reveal">
+                    <div class="stack-diagram__row">
+                        <div class="stack-layer">
+                            <div class="stack-layer__name">Приложение</div>
+                            <div class="stack-layer__tech">LangGraph StateGraph</div>
+                        </div>
+                        <div class="stack-layer">
+                            <div class="stack-layer__name">Агенты</div>
+                            <div class="stack-layer__tech">Coach, Tutor, Examiner</div>
+                        </div>
+                        <div class="stack-layer">
+                            <div class="stack-layer__name">LLM</div>
+                            <div class="stack-layer__tech">Ollama API</div>
+                        </div>
+                        <div class="stack-layer">
+                            <div class="stack-layer__name">Хранилище</div>
+                            <div class="stack-layer__tech">ChromaDB</div>
+                        </div>
+                    </div>
+                    <p class="stack-diagram__note">
+                        Каждый слой заменяем на fallback‑реализацию для офлайн‑режима.
+                    </p>
                 </div>
             </div>
         </section>
@@ -106,38 +137,48 @@ result = graph.invoke({<span class="s2">"user_profile"</span>: profile}, config)
         <!-- FEATURES -->
         <section class="section section--alt" id="features">
             <div class="container">
-                <h2 class="section__title">Возможности</h2>
+                <div class="section__head">
+                    <h2 class="section__title">Возможности</h2>
+                </div>
 
                 <div class="features-list">
-                    <div class="feature">
+                    <div class="feature reveal">
                         <div class="feature__icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12l1.5-1.5c.5-.5 1-.7 1.5-.7h12c.5 0 1 .2 1.5.7L22 12"/><path d="M12 12V2"/><path d="M2 12l1.5 1.5c.5.5 1 .7 1.5.7h12c.5 0 1-.2 1.5-.7L22 12"/></svg>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M2 12l1.5-1.5c.5-.5 1-.7 1.5-.7h12c.5 0 1 .2 1.5.7L22 12"/>
+                                <path d="M12 12V2"/>
+                                <path d="M2 12l1.5 1.5c.5.5 1 .7 1.5.7h12c.5 0 1-.2 1.5-.7L22 12"/>
+                            </svg>
                         </div>
-                        <span class="feature__tag">RAG</span>
                         <h3 class="feature__title">Контекст из знаний</h3>
                         <p class="feature__text">ChromaDB‑хранилище с эмбеддингами подкрепляет материалы и задания актуальными источниками.</p>
                     </div>
-                    <div class="feature">
+                    <div class="feature reveal">
                         <div class="feature__icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20M5.5 5.5l-3 3 3 3M18.5 5.5l3 3-3 3M12 12V2m0 20v-6"/></svg>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M2 12h20M5.5 5.5l-3 3 3 3M18.5 5.5l3 3-3 3M12 12V2m0 20v-6"/>
+                            </svg>
                         </div>
-                        <span class="feature__tag">memory</span>
                         <h3 class="feature__title">Память сессии</h3>
-                        <p class="feature__text">Агрегация слабых мест, session brief и персистентные чекпоинты.</p>
+                        <p class="feature__text">Агрегация слабых мест и персистентные чекпоинты для продолжения обучения в любой момент.</p>
                     </div>
-                    <div class="feature">
+                    <div class="feature reveal">
                         <div class="feature__icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2v4m0 12v4M2 12h4m12 0h4"/></svg>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 2v4m0 12v4M2 12h4m12 0h4"/>
+                            </svg>
                         </div>
-                        <span class="feature__tag">langgraph</span>
                         <h3 class="feature__title">LangGraph оркестрация</h3>
-                        <p class="feature__text">Условный роутинг PASS/RETRY/END с human-in-the-loop через interrupt.</p>
+                        <p class="feature__text">Условный роутинг PASS/RETRY/END с человеческим вводом на основе interrupt.</p>
                     </div>
-                    <div class="feature">
+                    <div class="feature reveal">
                         <div class="feature__icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M2 8l10 5 10-5M8 13V9l4 2 4-2v4"/></svg>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="3" width="20" height="14" rx="2"/>
+                                <path d="M2 8l10 5 10-5M8 13V9l4 2 4-2v4"/>
+                            </svg>
                         </div>
-                        <span class="feature__tag">docker</span>
                         <h3 class="feature__title">Готово к запуску</h3>
                         <p class="feature__text">Разворачивается через Docker Compose с Ollama и ChromaDB.</p>
                     </div>
@@ -156,45 +197,47 @@ result = graph.invoke({<span class="s2">"user_profile"</span>: profile}, config)
         <!-- STATUS -->
         <section class="section" id="status">
             <div class="container">
-                <h2 class="section__title">Этапы разработки</h2>
+                <div class="section__head">
+                    <h2 class="section__title">Этапы разработки</h2>
+                </div>
 
                 <div class="roadmap-steps">
-                    <div class="step completed">
+                    <div class="step completed reveal">
                         <div class="step__num">1</div>
                         <div class="step__info">
-                            <span class="step__label">Базовый автомат-агент</span>
+                            <span class="step__label">Базовый автомат‑агент</span>
                             <span class="step__status">Готово</span>
                         </div>
                     </div>
-                    <div class="step completed">
+                    <div class="step completed reveal">
                         <div class="step__num">2</div>
                         <div class="step__info">
-                            <span class="step__label">Абстракция LLM-провайдера</span>
+                            <span class="step__label">Абстракция LLM‑провайдера</span>
                             <span class="step__status">Готово</span>
                         </div>
                     </div>
-                    <div class="step completed">
+                    <div class="step completed reveal">
                         <div class="step__num">3</div>
                         <div class="step__info">
                             <span class="step__label">LLM runtime и память</span>
                             <span class="step__status">Готово</span>
                         </div>
                     </div>
-                    <div class="step completed">
+                    <div class="step completed reveal">
                         <div class="step__num">4</div>
                         <div class="step__info">
-                            <span class="step__label">RAG-конвейер (ChromaDB)</span>
+                            <span class="step__label">RAG‑конвейер (ChromaDB)</span>
                             <span class="step__status">Готово</span>
                         </div>
                     </div>
-                    <div class="step in-progress">
+                    <div class="step in-progress reveal">
                         <div class="step__num">5</div>
                         <div class="step__info">
                             <span class="step__label">Web UI (Chainlit)</span>
                             <span class="step__status">В работе</span>
                         </div>
                     </div>
-                    <div class="step pending">
+                    <div class="step pending reveal">
                         <div class="step__num">6</div>
                         <div class="step__info">
                             <span class="step__label">Персистентные чекпоинты</span>
@@ -208,7 +251,7 @@ result = graph.invoke({<span class="s2">"user_profile"</span>: profile}, config)
         <!-- NOTIFY -->
         <section class="section section--alt" id="notify">
             <div class="container">
-                <div class="notify">
+                <div class="notify reveal">
                     <h2 class="notify__title">Будьте первым</h2>
                     <p class="notify__text">
                         Оставьте email — мы сообщим, как только Nereus станет
