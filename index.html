@@ -8,7 +8,7 @@
     <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
@@ -23,6 +23,7 @@
                 <ul class="nav__list">
                     <li><a href="#how-it-works">Как это работает</a></li>
                     <li><a href="#features">Возможности</a></li>
+                    <li><a href="#web-ui">Интерфейс</a></li>
                     <li><a href="#status">Разработка</a></li>
                     <li><a href="#notify">Связаться</a></li>
                 </ul>
@@ -51,7 +52,7 @@
                 <p class="hero__subtitle">
                     Nereus строит для вас персональный план обучения, сопровождая
                     каждую тему материалами, практическими заданиями и проверкой
-                    знаний. Скоро — в ваших руках.
+                    знаний через диалог с ИИ.
                 </p>
                 <div class="hero__actions">
                     <a href="#notify" class="btn btn--primary">Узнать первым</a>
@@ -77,7 +78,7 @@
                     </p>
                 </div>
 
-                <div class="flow-diagram">
+                <div class="flow-diagram reveal">
                     <div class="flow-diagram__row">
                         <div class="agent-node agent-node--1">
                             <div class="agent-node__badge">1</div>
@@ -106,30 +107,6 @@
                         <span class="loop-separator"></span>
                         <span class="loop-item"><span class="loop-label">RETRY</span> — повторить тему</span>
                     </div>
-                </div>
-
-                <div class="stack-diagram reveal">
-                    <div class="stack-diagram__row">
-                        <div class="stack-layer">
-                            <div class="stack-layer__name">Приложение</div>
-                            <div class="stack-layer__tech">LangGraph StateGraph</div>
-                        </div>
-                        <div class="stack-layer">
-                            <div class="stack-layer__name">Агенты</div>
-                            <div class="stack-layer__tech">Coach, Tutor, Examiner</div>
-                        </div>
-                        <div class="stack-layer">
-                            <div class="stack-layer__name">LLM</div>
-                            <div class="stack-layer__tech">Ollama API</div>
-                        </div>
-                        <div class="stack-layer">
-                            <div class="stack-layer__name">Хранилище</div>
-                            <div class="stack-layer__tech">ChromaDB</div>
-                        </div>
-                    </div>
-                    <p class="stack-diagram__note">
-                        Каждый слой заменяем на fallback‑реализацию для офлайн‑режима.
-                    </p>
                 </div>
             </div>
         </section>
@@ -180,7 +157,7 @@
                             </svg>
                         </div>
                         <h3 class="feature__title">Готово к запуску</h3>
-                        <p class="feature__text">Разворачивается через Docker Compose с Ollama и ChromaDB.</p>
+                        <p class="feature__text">Разворачивается через Docker Compose с поддержкой Ollama и ChromaDB.</p>
                     </div>
                 </div>
 
@@ -194,8 +171,62 @@
             </div>
         </section>
 
+        <!-- WEB UI -->
+        <section class="section" id="web-ui">
+            <div class="container">
+                <div class="section__head">
+                    <h2 class="section__title">Удобный веб‑интерфейс</h2>
+                    <p class="section__lead">
+                        Управляйте обучением через привычный чат. Готово к работе
+                        из коробки — достаточно одного запуска Docker.
+                    </p>
+                </div>
+
+                <div class="chat-preview reveal">
+                    <div class="chat-window">
+                        <div class="chat-header">
+                            <span class="chat-header__title">Nereus</span>
+                            <span class="chat-header__status">ИИ-тютор</span>
+                        </div>
+                        <div class="chat-messages">
+                            <div class="message message--bot">
+                                <div class="message__content">
+                                    Я ваш AI‑тютор. Давайте создадим дорожную карту.
+                                </div>
+                            </div>
+                            <div class="message message--bot">
+                                <div class="message__content">
+                                    <strong>Тема 1:</strong> Основы Python.
+                                    <div class="message__task">Напишите функцию, которая считает факториал.</div>
+                                </div>
+                            </div>
+                            <div class="message message--user">
+                                <div class="message__content">
+                                    def factorial(n): return 1 if n &lt;= 1 else n * factorial(n-1)
+                                </div>
+                            </div>
+                            <div class="message message--bot">
+                                <div class="message__content">
+                                    Отлично! 90/100. Переходим к следующей теме.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chat-input">
+                            <input type="text" placeholder="Введите ответ..." disabled>
+                            <button type="button" class="btn btn--primary">Отправить</button>
+                        </div>
+                    </div>
+
+                    <div class="web-ui-badges">
+                        <span class="web-badge">1 клик — Docker</span>
+                        <span class="web-badge">Готово из коробки</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- STATUS -->
-        <section class="section" id="status">
+        <section class="section section--alt" id="status">
             <div class="container">
                 <div class="section__head">
                     <h2 class="section__title">Этапы разработки</h2>

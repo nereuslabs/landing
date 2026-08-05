@@ -56,7 +56,7 @@
 
     /* —— Reveal on scroll —— */
     const revealElements = document.querySelectorAll(
-        ".agent-node, .feature, .step, .code-block, .notify, .hero__badge"
+        ".agent-node, .feature, .step, .chat-preview, .notify, .hero__badge"
     );
 
     const revealObserver = new IntersectionObserver(
