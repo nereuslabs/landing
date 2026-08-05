@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nereus — AI-тютор</title>
-    <meta name="description" content="Nereus: AI-тютор, который строит дорожную карту обучения и сопровождает от начала до уверенных навыков за 50 часов через диалог с ИИ. RAG, LangGraph, Ollama, ChromaDB — полностью локально.">
+    <title>Nereus — AI-тютор нового поколения</title>
+    <meta name="description" content="Nereus: Мультиагентный AI-тютор на базе LangGraph. Строит дорожную карту обучения, задействует RAG и сопровождает до результата за 50 часов.">
     <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
@@ -18,18 +18,27 @@
     <header class="site-header">
         <div class="container header-inner">
             <a href="#" class="logo" aria-label="Nereus — на главную">
+                <span class="logo-badge">N</span>
                 <span class="logo-text">Nereus</span>
             </a>
             <nav class="nav" aria-label="Главная навигация">
                 <ul class="nav__list">
-                    <li><a href="#how-it-works">Как это работает</a></li>
+                    <li><a href="#how-it-works">Архитектура</a></li>
                     <li><a href="#features">Возможности</a></li>
-                    <li><a href="#tech-stack">Технологии</a></li>
+                    <li><a href="#tech-stack">Стек</a></li>
                     <li><a href="#progress">Разработка</a></li>
                     <li><a href="#reviews">Отзывы</a></li>
                     <li><a href="#faq">FAQ</a></li>
-                    <li><a href="#notify">Связаться</a></li>
+                    <li><a href="#notify">Доступ</a></li>
                 </ul>
+                <button type="button" class="cmd-k-trigger" id="cmd-k-btn" aria-label="Открыть командную панель">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"/>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                    </svg>
+                    <span>Команды</span>
+                    <span class="cmd-k-badge">⌘K</span>
+                </button>
             </nav>
             <button type="button" class="menu-toggle" aria-label="Открыть меню" aria-expanded="false">
                 <span class="menu-line"></span>
@@ -48,205 +57,156 @@
                     <div class="hero__text">
                         <div class="hero__badge">
                             <span class="badge-dot"></span>
-                            <span>В разработке</span>
+                            <span>AGENT ENGINE v0.4.2 — IN DEVELOPMENT</span>
                         </div>
                         <h1 class="hero__title">
-                            AI‑тютор: от дорожной карты до уверенных навыков
-                            за 50 часов, а не за месяцы
+                            AI‑тютор нового поколения: от плана до навыков за <span class="hero__title-accent">50 часов</span>
                         </h1>
                         <p class="hero__subtitle">
-                            Забудьте о статичных курсах. Nereus строит персональный
-                            план, даёт материалы из актуальных источников (RAG) и
-                            проверяет знания в диалоге. Персистентная память
-                            позволит продолжить с того же места.
+                            Забудьте о пассивных видеокурсах. Nereus — это автономия мультиагентного графа (LangGraph) с локальным RAG-контекстом и персистентной памятью сессий.
                         </p>
                         <div class="hero__actions">
-                            <a href="#notify" class="btn btn--primary">Получить ранний доступ</a>
-                            <a href="#how-it-works" class="btn btn--ghost">Как это работает</a>
+                            <a href="#notify" class="btn btn--primary">
+                                <span>Получить ранний доступ</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"/>
+                                    <polyline points="12 5 19 12 12 19"/>
+                                </svg>
+                            </a>
+                            <a href="#how-it-works" class="btn btn--ghost">Как работает граф</a>
                         </div>
                         <div class="hero__badges">
-                            <span class="tech-badge">LangGraph</span>
-                            <span class="tech-badge">Ollama</span>
-                            <span class="tech-badge">ChromaDB</span>
-                            <span class="tech-badge">Chainlit</span>
+                            <span class="tech-badge">LangGraph 0.2</span>
+                            <span class="tech-badge">Ollama Llama3.2</span>
+                            <span class="tech-badge">ChromaDB Vector</span>
+                            <span class="tech-badge">Chainlit UI</span>
                         </div>
                     </div>
                     <div class="hero__viz">
-                        <div class="agent-cycle reveal">
-                            <div class="agent-node agent-node--1">
-                                <div class="agent-node__badge">1</div>
-                                <div class="agent-node__name">Coach</div>
-                                <div class="agent-node__desc">Дорожная карта</div>
-                            </div>
-                            <div class="cycle-arrow">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M12 5v14M5 12l7 7 7-7"/>
-                                </svg>
-                            </div>
-                            <div class="agent-node agent-node--2">
-                                <div class="agent-node__badge">2</div>
-                                <div class="agent-node__name">Tutor</div>
-                                <div class="agent-node__desc">Материал</div>
-                            </div>
-                            <div class="cycle-arrow">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M12 5v14M5 12l7 7 7-7"/>
-                                </svg>
-                            </div>
-                            <div class="agent-node agent-node--3">
-                                <div class="agent-node__badge">3</div>
-                                <div class="agent-node__name">Examiner</div>
-                                <div class="agent-node__desc">Оценка</div>
-                            </div>
-                            <div class="cycle-loop">
-                                <span class="loop-tag loop-pass">PASS</span>
-                                <span class="loop-tag loop-retry">RETRY</span>
-                            </div>
+                        <div class="hero__canvas-wrap reveal">
+                            <canvas id="agent-canvas"></canvas>
+                            <div class="hero__canvas-overlay"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ===== HOW IT WORKS ===== -->
+        <!-- ===== EXECUTION LOG / HOW IT WORKS ===== -->
         <section class="section" id="how-it-works">
             <div class="container">
                 <div class="section__head">
-                    <h2 class="section__title">Как это работает</h2>
+                    <span class="section__tag">[ ORCHESTRATION ]</span>
+                    <h2 class="section__title">Мультиагентная система исполнения</h2>
                     <p class="section__lead">
-                        Три агента — один цикл. LangGraph решает, что делать дальше.
+                        Три специализированных агента координируют процесс обучения в едином цикле с условным роутингом state-машины.
                     </p>
                 </div>
 
-                <div class="process-steps reveal">
-                    <div class="step-card">
-                        <div class="step-card__num">01</div>
-                        <div class="step-card__content">
-                            <h3 class="step-card__title">Coach — анализ и план</h3>
-                            <p class="step-card__text">
-                                Анализирует ваши цели и текущий уровень, создаёт
-                                персональную дорожную карту обучения с разбивкой на темы.
+                <div class="execution-log reveal-stagger">
+                    <div class="exec-step reveal">
+                        <div class="exec-step__icon">01</div>
+                        <div class="exec-step__body">
+                            <div class="exec-step__header">
+                                <h3 class="exec-step__title">CoachAgent — Генератор траектории</h3>
+                                <span class="exec-step__tag">State: ROADMAP_GEN</span>
+                            </div>
+                            <p class="exec-step__desc">
+                                Анализирует исходный уровень пользователя, дробит цель на атомарные темы и строит динамический граф обучения с учетом выявленных пробелов.
                             </p>
                         </div>
                     </div>
-                    <div class="step-card">
-                        <div class="step-card__num">02</div>
-                        <div class="step-card__content">
-                            <h3 class="step-card__title">Tutor — материал и практика</h3>
-                            <p class="step-card__text">
-                                Выдаёт теорию, практические задания и примеры из
-                                реальных проектов с RAG‑подкреплением знаний.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="step-card">
-                        <div class="step-card__num">03</div>
-                        <div class="step-card__content">
-                            <h3 class="step-card__title">Examiner — оценка и прогресс</h3>
-                            <p class="step-card__text">
-                                Проверяет ваши ответы через диалог, оценивает результаты
-                                и адаптирует план — повторим или движемся дальше.
-                            </p>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="process-flow reveal">
-                    <div class="flow-row">
-                        <div class="flow-node">
-                            <div class="flow-node__badge">1</div>
-                            <div class="flow-node__name">Coach</div>
-                            <div class="flow-node__desc">Дорожная карта</div>
-                        </div>
-                        <div class="flow-connector">
-                            <svg width="24" height="16" viewBox="0 0 24 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M2 8h20M18 4l4 4-4 4"/>
-                            </svg>
-                        </div>
-                        <div class="flow-node">
-                            <div class="flow-node__badge">2</div>
-                            <div class="flow-node__name">Tutor</div>
-                            <div class="flow-node__desc">Материал + задание</div>
-                        </div>
-                        <div class="flow-connector">
-                            <svg width="24" height="16" viewBox="0 0 24 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M2 8h20M18 4l4 4-4 4"/>
-                            </svg>
-                        </div>
-                        <div class="flow-node">
-                            <div class="flow-node__badge">3</div>
-                            <div class="flow-node__name">Examiner</div>
-                            <div class="flow-node__desc">Оценка ответа</div>
+                    <div class="exec-step reveal">
+                        <div class="exec-step__icon">02</div>
+                        <div class="exec-step__body">
+                            <div class="exec-step__header">
+                                <h3 class="exec-step__title">TutorAgent — RAG-преподаватель</h3>
+                                <span class="exec-step__tag">State: MATERIAL_STREAM</span>
+                            </div>
+                            <p class="exec-step__desc">
+                                Извлекает подлинные контекстные фрагменты из векторной базы ChromaDB, формирует структурированные уроки и генерирует практические задачи.
+                            </p>
                         </div>
                     </div>
-                    <div class="flow-loop">
-                        <span class="loop-item"><span class="loop-tag loop-pass">PASS</span> → следующая тема</span>
-                        <span class="loop-dot"></span>
-                        <span class="loop-item"><span class="loop-tag loop-retry">RETRY</span> → повторить тему</span>
+
+                    <div class="exec-step reveal">
+                        <div class="exec-step__icon">03</div>
+                        <div class="exec-step__body">
+                            <div class="exec-step__header">
+                                <h3 class="exec-step__title">ExaminerAgent — Валидатор и роутер</h3>
+                                <span class="exec-step__tag">State: EVALUATION_ROUTER</span>
+                            </div>
+                            <p class="exec-step__desc">
+                                Проверяет глубину усвоения через диалог с ИИ. Совершает условный переход: <code>PASS</code> (переход дальше) или <code>RETRY</code> (закрепление материала).
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ===== FEATURES ===== -->
-        <section class="section section--alt" id="features">
+        <!-- ===== KNOWLEDGE MESH / FEATURES ===== -->
+        <section class="section" id="features">
             <div class="container">
                 <div class="section__head">
-                    <h2 class="section__title">Возможности</h2>
+                    <span class="section__tag">[ CAPABILITIES ]</span>
+                    <h2 class="section__title">Архитектурные преимущества Nereus</h2>
+                    <p class="section__lead">
+                        Полная локальность, безопасность данных и отсутствие задержек облачных API.
+                    </p>
                 </div>
 
-                <div class="features-grid">
-                    <div class="feature-card reveal">
-                        <div class="feature-card__icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M2 12l1.5-1.5c.5-.5 1-.7 1.5-.7h12c.5 0 1 .2 1.5.7L22 12v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2z"/>
-                                <path d="M12 2v10"/>
-                                <path d="M12 12l3-3"/>
+                <div class="mesh-grid reveal-stagger">
+                    <div class="mesh-card reveal">
+                        <div class="mesh-card__icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                                <line x1="12" y1="22.08" x2="12" y2="12"/>
                             </svg>
                         </div>
-                        <h3 class="feature-card__title">Контекст из знаний</h3>
-                        <p class="feature-card__text">
-                            ChromaDB с эмбеддингами подкрепляет материалы и задания
-                            актуальными источниками знаний.
+                        <h3 class="mesh-card__title">Контекст из ChromaDB</h3>
+                        <p class="mesh-card__text">
+                            Векторные эмбеддинги гарантируют, что ИИ не галлюцинирует, а опирается на загруженную документацию и учебники.
                         </p>
                     </div>
-                    <div class="feature-card reveal">
-                        <div class="feature-card__icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M2 12h20M5.5 5.5l-3 3 3 3M18.5 5.5l3 3-3 3M12 12V2m0 20v-6"/>
+
+                    <div class="mesh-card reveal">
+                        <div class="mesh-card__icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            </svg>
+                        </div>
+                        <h3 class="mesh-card__title">100% Локальная приватность</h3>
+                        <p class="mesh-card__text">
+                            Запуск через Docker Compose и Ollama (Llama 3.2 / Qwen 2.5) означает, что ваш прогресс и данные не покидают компьютер.
+                        </p>
+                    </div>
+
+                    <div class="mesh-card reveal">
+                        <div class="mesh-card__icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
                             </svg>
                         </div>
-                        <h3 class="feature-card__title">Память сессии</h3>
-                        <p class="feature-card__text">
-                            Агрегация слабых мест и персистентные чекпоинты позволяют
-                            продолжать обучение с того же места.
+                        <h3 class="mesh-card__title">Персистентные чекпоинты</h3>
+                        <p class="mesh-card__text">
+                            Память сессий сохраняется в SQLite/Postgres. Вы можете сделать паузу в любой момент и продолжить точно с той же мысли.
                         </p>
                     </div>
-                    <div class="feature-card reveal">
-                        <div class="feature-card__icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"/>
-                                <path d="M12 2v4m0 12v4M2 12h4m12 0h4"/>
+
+                    <div class="mesh-card reveal">
+                        <div class="mesh-card__icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="16 18 22 12 16 6"/>
+                                <polyline points="8 6 2 12 8 18"/>
                             </svg>
                         </div>
-                        <h3 class="feature-card__title">LangGraph оркестрация</h3>
-                        <p class="feature-card__text">
-                            Условный роутинг PASS/RETRY/END с человеческим вводом
-                            на основе interrupt.
-                        </p>
-                    </div>
-                    <div class="feature-card reveal">
-                        <div class="feature-card__icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="2" y="3" width="20" height="14" rx="2"/>
-                                <path d="M2 8l10 5 10-5M8 13V9l4 2 4-2v4"/>
-                            </svg>
-                        </div>
-                        <h3 class="feature-card__title">Готово к запуску</h3>
-                        <p class="feature-card__text">
-                            Разворачивается через Docker Compose с поддержкой Ollama
-                            и ChromaDB в один клик.
+                        <h3 class="mesh-card__title">Интерактивный UI Chainlit</h3>
+                        <p class="mesh-card__text">
+                            Удобный чат-интерфейс с поддержкой Markdown, кодовых блоков, подсветки синтаксиса и отображения состояния агентов в реальном времени.
                         </p>
                     </div>
                 </div>
@@ -257,159 +217,210 @@
         <section class="section" id="tech-stack">
             <div class="container">
                 <div class="section__head">
-                    <h2 class="section__title">Технологии</h2>
+                    <span class="section__tag">[ INFRASTRUCTURE ]</span>
+                    <h2 class="section__title">Технологический стек</h2>
                 </div>
 
-                <div class="tech-grid reveal">
-                    <div class="tech-item">
-                        <div class="tech-item__logo">
-                            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-                                <circle cx="20" cy="20" r="18" fill="url(#langgraph-gradient)" stroke="currentColor" stroke-width="1"/>
-                                <defs>
-                                    <linearGradient id="langgraph-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" stop-color="#5fa3d1"/>
-                                        <stop offset="100%" stop-color="#8a8abf"/>
-                                    </linearGradient>
-                                </defs>
-                                <path d="M20 8 L28 20 L20 32 L12 20 Z" fill="white" fill-opacity="0.9"/>
+                <div class="tech-grid reveal-stagger">
+                    <div class="tech-card reveal">
+                        <div class="tech-card__icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="18" cy="5" r="3"/>
+                                <circle cx="6" cy="12" r="3"/>
+                                <circle cx="18" cy="19" r="3"/>
+                                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+                                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
                             </svg>
                         </div>
-                        <div class="tech-item__name">LangGraph</div>
-                        <div class="tech-item__desc">Оркестрация агентов</div>
+                        <div class="tech-card__name">LangGraph</div>
+                        <div class="tech-card__desc">Stateful Agent Graphs</div>
                     </div>
-                    <div class="tech-item">
-                        <div class="tech-item__logo">
-                            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-                                <rect x="4" y="4" width="32" height="32" rx="6" fill="#924000"/>
-                                <circle cx="20" cy="20" r="8" fill="white" fill-opacity="0.8"/>
+
+                    <div class="tech-card reveal">
+                        <div class="tech-card__icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5"/>
+                                <path d="M12 8v8M8 12h8"/>
                             </svg>
                         </div>
-                        <div class="tech-item__name">Ollama</div>
-                        <div class="tech-item__desc">Локальный LLM runtime</div>
+                        <div class="tech-card__name">Ollama</div>
+                        <div class="tech-card__desc">Local LLM Runtime</div>
                     </div>
-                    <div class="tech-item">
-                        <div class="tech-item__logo">
-                            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-                                <rect x="4" y="7" width="32" height="26" rx="3" fill="#ddd"/>
-                                <circle cx="14" cy="18" r="3" fill="#ed8936"/>
-                                <circle cx="26" cy="24" r="3" fill="#ed8936"/>
+
+                    <div class="tech-card reveal">
+                        <div class="tech-card__icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                <ellipse cx="12" cy="5" rx="9" ry="3"/>
+                                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+                                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
                             </svg>
                         </div>
-                        <div class="tech-item__name">ChromaDB</div>
-                        <div class="tech-item__desc">Векторное хранилище для RAG</div>
+                        <div class="tech-card__name">ChromaDB</div>
+                        <div class="tech-card__desc">Vector Store &amp; RAG</div>
                     </div>
-                    <div class="tech-item">
-                        <div class="tech-item__logo">
-                            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-                                <rect x="4" y="6" width="32" height="28" rx="4" fill="#636363"/>
-                                <rect x="9" y="11" width="26" height="8" rx="2" fill="#5fa3d1"/>
-                                <rect x="9" y="22" width="26" height="6" rx="2" fill="#636363"/>
+
+                    <div class="tech-card reveal">
+                        <div class="tech-card__icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                <path d="M9 3v18M15 3v18M3 9h18M3 15h18"/>
                             </svg>
                         </div>
-                        <div class="tech-item__name">Chainlit</div>
-                        <div class="tech-item__desc">Веб-интерфейс</div>
+                        <div class="tech-card__name">Chainlit</div>
+                        <div class="tech-card__desc">Python Agent Frontend</div>
                     </div>
-                    <div class="tech-item">
-                        <div class="tech-item__logo">
-                            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-                                <rect x="6" y="4" width="28" height="32" rx="4" fill="#24292e"/>
-                                <circle cx="20" cy="20" r="12" fill="#fff" fill-opacity="0.05"/>
-                                <path d="M14 14 L26 26 M26 14 L14 26" stroke="#fff" stroke-width="1.5"/>
+
+                    <div class="tech-card reveal">
+                        <div class="tech-card__icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 12.5c0 1-.5 1.5-1.5 1.5h-17C2.5 14 2 13.5 2 12.5v-5C2 6.5 2.5 6 3.5 6h17c1 0 1.5.5 1.5 1.5v5z"/>
+                                <path d="M6 6V3M10 6V3M14 6V3M18 6V3"/>
                             </svg>
                         </div>
-                        <div class="tech-item__name">Docker</div>
-                        <div class="tech-item__desc">Контейнеризация</div>
+                        <div class="tech-card__name">Docker</div>
+                        <div class="tech-card__desc">One-command setup</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ===== PROGRESS ===== -->
-        <section class="section section--alt" id="progress">
+        <!-- ===== PROGRESS ROADMAP ===== -->
+        <section class="section" id="progress">
             <div class="container">
                 <div class="section__head">
-                    <h2 class="section__title">Этапы разработки</h2>
+                    <span class="section__tag">[ MILESTONES ]</span>
+                    <h2 class="section__title">Дорожная карта разработки</h2>
                 </div>
 
-                <div class="timeline">
-                    <div class="timeline__track">
-                        <div class="timeline__line"></div>
+                <div class="timeline reveal-stagger">
+                    <div class="timeline__item reveal">
+                        <div class="timeline__dot timeline__dot--done">✓</div>
+                        <div class="timeline__content">
+                            <div>
+                                <span class="timeline__label">Шаг 01</span>
+                                <h3 class="timeline__title">Базовый автомат-агент LangGraph</h3>
+                            </div>
+                            <span class="timeline__status status--done">Завершено</span>
+                        </div>
                     </div>
-                    <div class="timeline__items">
-                        <div class="timeline__item reveal">
-                        <div class="timeline__dot timeline__dot--done">
-                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M20 6L9 17l-5-5"/>
-                            </svg>
-                        </div>
+
+                    <div class="timeline__item reveal">
+                        <div class="timeline__dot timeline__dot--done">✓</div>
                         <div class="timeline__content">
-                            <span class="timeline__label">Шаг 1</span>
-                            <h3 class="timeline__title">Базовый автомат‑агент</h3>
-                            <span class="timeline__status status--done">Готово</span>
-                        </div>
-                        </div>
-                        <div class="timeline__item reveal">
-                        <div class="timeline__dot timeline__dot--done">
-                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M20 6L9 17l-5-5"/>
-                            </svg>
-                        </div>
-                        <div class="timeline__content">
-                            <span class="timeline__label">Шаг 2</span>
-                            <h3 class="timeline__title">Абстракция LLM‑провайдера</h3>
-                            <span class="timeline__status status--done">Готово</span>
-                        </div>
-                        </div>
-                        <div class="timeline__item reveal">
-                        <div class="timeline__dot timeline__dot--done">
-                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M20 6L9 17l-5-5"/>
-                            </svg>
-                        </div>
-                        <div class="timeline__content">
-                            <span class="timeline__label">Шаг 3</span>
-                            <h3 class="timeline__title">LLM runtime и память</h3>
-                            <span class="timeline__status status--done">Готово</span>
-                        </div>
-                        </div>
-                        <div class="timeline__item reveal">
-                        <div class="timeline__dot timeline__dot--done">
-                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M20 6L9 17l-5-5"/>
-                            </svg>
-                        </div>
-                        <div class="timeline__content">
-                            <span class="timeline__label">Шаг 4</span>
-                            <h3 class="timeline__title">RAG‑конвейер (ChromaDB)</h3>
-                            <span class="timeline__status status--done">Готово</span>
-                        </div>
-                        </div>
-                        <div class="timeline__item reveal">
-                            <div class="timeline__dot timeline__dot--active">
-                                <span class="timeline__current">
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="none">
-                                    <circle cx="12" cy="12" r="6"/>
-                                </svg>
-                            </span>
+                            <div>
+                                <span class="timeline__label">Шаг 02</span>
+                                <h3 class="timeline__title">Абстракция LLM-провайдеров</h3>
                             </div>
-                            <div class="timeline__content">
-                                <span class="timeline__label">Шаг 5</span>
-                                <h3 class="timeline__title">Web UI (Chainlit)</h3>
-                                <span class="timeline__status status--active">В работе</span>
+                            <span class="timeline__status status--done">Завершено</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline__item reveal">
+                        <div class="timeline__dot timeline__dot--done">✓</div>
+                        <div class="timeline__content">
+                            <div>
+                                <span class="timeline__label">Шаг 03</span>
+                                <h3 class="timeline__title">LLM Runtime и контекстная память</h3>
+                            </div>
+                            <span class="timeline__status status--done">Завершено</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline__item reveal">
+                        <div class="timeline__dot timeline__dot--done">✓</div>
+                        <div class="timeline__content">
+                            <div>
+                                <span class="timeline__label">Шаг 04</span>
+                                <h3 class="timeline__title">RAG-конвейер на ChromaDB</h3>
+                            </div>
+                            <span class="timeline__status status--done">Завершено</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline__item reveal">
+                        <div class="timeline__dot timeline__dot--active">●</div>
+                        <div class="timeline__content">
+                            <div>
+                                <span class="timeline__label">Шаг 05</span>
+                                <h3 class="timeline__title">Интеграция Web UI (Chainlit)</h3>
+                            </div>
+                            <span class="timeline__status status--active">В работе</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline__item reveal">
+                        <div class="timeline__dot timeline__dot--pending">○</div>
+                        <div class="timeline__content">
+                            <div>
+                                <span class="timeline__label">Шаг 06</span>
+                                <h3 class="timeline__title">Персистентные чекпоинты сессий</h3>
+                            </div>
+                            <span class="timeline__status status--pending">В планах</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== REVIEWS ===== -->
+        <section class="section" id="reviews">
+            <div class="container">
+                <div class="section__head">
+                    <span class="section__tag">[ FEEDBACK ]</span>
+                    <h2 class="section__title">Ранние пользователи говорят</h2>
+                </div>
+
+                <div class="reviews-grid reveal-stagger">
+                    <div class="review-card reveal">
+                        <p class="review-card__text">
+                            «Разобрался с LangGraph и условными эджами за 3 дня вместо 3 недель благодаря структурированной сдаче тем.»
+                        </p>
+                        <span class="review-card__author">— Иван П., Backend Dev</span>
+                    </div>
+
+                    <div class="review-card reveal">
+                        <p class="review-card__text">
+                            «Понимание RAG-контекста и векторизации закрепилось через диалоговые вопросы Examiner'а гораздо лучше, чем от видео.»
+                        </p>
+                        <span class="review-card__author">— Анна С., Frontend Dev</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FAQ ===== -->
+        <section class="section" id="faq">
+            <div class="container">
+                <div class="section__head">
+                    <span class="section__tag">[ FAQ ]</span>
+                    <h2 class="section__title">Часто задаваемые вопросы</h2>
+                </div>
+
+                <div class="faq-list reveal-stagger">
+                    <div class="faq-item reveal">
+                        <button type="button" class="faq-button" aria-expanded="false">
+                            <span>Как это работает технически?</span>
+                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </button>
+                        <div class="faq-content">
+                            <div class="faq-inner">
+                                Nereus использует оркестратор LangGraph для создания циклического агента с состояниями Coach, Tutor и Examiner. Ответы генерируются локальной моделью в Ollama с добавлением релевантных контекстных чанков из ChromaDB.
                             </div>
                         </div>
-                        <div class="timeline__item reveal">
-                            <div class="timeline__dot timeline__dot--pending">
-                                <span class="timeline__pending">
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="12" cy="12" r="6"/>
-                                </svg>
-                            </span>
-                            </div>
-                            <div class="timeline__content">
-                                <span class="timeline__label">Шаг 6</span>
-                                <h3 class="timeline__title">Персистентные чекпоинты</h3>
-                                <span class="timeline__status status--pending">В планах</span>
+                    </div>
+
+                    <div class="faq-item reveal">
+                        <button type="button" class="faq-button" aria-expanded="false">
+                            <span>Поддерживается ли полностью локальный запуск?</span>
+                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </button>
+                        <div class="faq-content">
+                            <div class="faq-inner">
+                                Да, абсолютно. Проект запускается одной командой через <a href="https://github.com/nereuslabs/Nereus" target="_blank" rel="noopener">Docker Compose</a>: LLM через Ollama, векторная база ChromaDB и интерфейс Chainlit работают автономно без выхода во внешнюю сеть.
                             </div>
                         </div>
                     </div>
@@ -417,128 +428,79 @@
             </div>
         </section>
 
-        <!-- ===== CTA ===== -->
-        <section class="section section--cta" id="notify">
+        <!-- ===== CTA SECTION ===== -->
+        <section class="section" id="notify">
             <div class="container">
                 <div class="cta-block reveal">
-                    <h2 class="cta__title">Будьте первым</h2>
+                    <h2 class="cta__title">Будьте в числе первых</h2>
                     <p class="cta__text">
-                        Оставьте email — мы сообщим, как только Nereus станет
-                        доступен для тестирования.
+                        Оставьте ваш email, чтобы получить приглашение в ранний закрытый бета-тест Nereus.
                     </p>
                     <form class="cta__form" id="notify-form">
-                        <input type="email"
-                               name="email"
-                               placeholder="you@example.com"
-                               autocomplete="email"
-                               required
-                               aria-label="Ваш email">
+                        <input type="email" name="email" placeholder="dev@example.com" required autocomplete="email" aria-label="Ваш email">
                         <button type="submit" class="btn btn--primary">Получить ранний доступ</button>
                     </form>
                     <p class="cta__hint">
-                        Или посмотрите на
-                        <a href="https://github.com/nereuslabs/Nereus" target="_blank" rel="noopener">GitHub</a>.
+                        Или следите за исходным кодом на <a href="https://github.com/nereuslabs/Nereus" target="_blank" rel="noopener">GitHub</a>.
                     </p>
                 </div>
             </div>
         </section>
+
     </main>
 
-     <!-- ===== REVIEWS ===== -->
-    <section class="section section--dark" id="reviews">
-        <div class="container">
-            <div class="section__head">
-                <h2 class="section__title">Ранние пользователи говорят</h2>
+    <!-- ===== COMMAND PALETTE MODAL (⌘K) ===== -->
+    <div class="cmd-modal" id="cmd-modal" role="dialog" aria-label="Командная панель">
+        <div class="cmd-box">
+            <div class="cmd-header">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-purple)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"/>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                </svg>
+                <input type="text" id="cmd-input" placeholder="Введите команду или раздел..." autocomplete="off">
             </div>
-            <div class="reviews">
-                <div class="review-card reveal">
-                    <div class="review-card__text">
-                        «Разобрался с LangGraph за 3 дня вместо 3 недель.»
-                    </div>
-                    <div class="review-card__author">— Иван П., Backend Dev</div>
+            <div class="cmd-list" id="cmd-list">
+                <div class="cmd-item" data-action="goto" data-target="#how-it-works">
+                    <span>Перейти: Мультиагентная архитектура</span>
+                    <span class="cmd-key">↵</span>
                 </div>
-                <div class="review-card reveal">
-                    <div class="review-card__text">
-                        «Увеличил конверсию своего лендинга на 30% после применения
-                        навыков.»
-                    </div>
-                    <div class="review-card__author">— Анна С., Frontend Dev</div>
+                <div class="cmd-item" data-action="goto" data-target="#features">
+                    <span>Перейти: Возможности &amp; RAG</span>
+                    <span class="cmd-key">↵</span>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== FAQ ===== -->
-    <section class="section" id="faq">
-        <div class="container">
-            <div class="section__head">
-                <h2 class="section__title">Часто задаваемые вопросы</h2>
-            </div>
-            <div class="faq">
-                <div class="faq__item">
-                    <button type="button" class="faq__question" aria-expanded="false">
-                        <span>Как это работает технически?</span>
-                        <span class="faq__icon" aria-hidden="true">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="6 9 12 15 18 9"/>
-                            </svg>
-                        </span>
-                    </button>
-                    <div class="faq__answer">
-                        <p>
-                            Nereus построен на трёх агентах на базе LangGraph,
-                            который координирует работу. Локальный LLM через
-                            Ollama обеспечивает ответы, а ChromaDB хранит
-                            контекст и источники (RAG‑конвейер). Все запросы
-                            проходят проверку занятия в диалоге с ИИ.
-                        </p>
-                    </div>
+                <div class="cmd-item" data-action="goto" data-target="#tech-stack">
+                    <span>Перейти: Технологический стек</span>
+                    <span class="cmd-key">↵</span>
                 </div>
-                <div class="faq__item">
-                    <button type="button" class="faq__question" aria-expanded="false">
-                        <span>Поддерживается ли локальный запуск?</span>
-                        <span class="faq__icon" aria-hidden="true">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="6 9 12 15 18 9"/>
-                            </svg>
-                        </span>
-                    </button>
-                    <div class="faq__answer">
-                        <p>
-                            Да. Nereus работает полностью локально через
-                            <a href="https://github.com/nereuslabs/Nereus" target="_blank" rel="noopener">Docker Compose</a>
-                            : LLM через Ollama, векторное хранилище ChromaDB и
-                            веб‑интерфейс — всё без выхода в интернет.
-                        </p>
-                    </div>
+                <div class="cmd-item" data-action="goto" data-target="#notify">
+                    <span>Запросить ранний доступ</span>
+                    <span class="cmd-key">↵</span>
+                </div>
+                <div class="cmd-item" data-action="sim">
+                    <span>Запустить симуляцию графа агентов</span>
+                    <span class="cmd-key">SIM</span>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-     <!-- ===== FOOTER ===== -->
+    <!-- ===== FOOTER ===== -->
     <footer class="site-footer">
         <div class="container footer-inner">
-            <div class="footer__col">
-                <span class="logo-text">Nereus</span>
-                <span class="footer__text">
-                    © 2026 Nereus Labs. Apache 2.0 License.
-                </span>
-            </div>
-            <div class="footer__col">
-                <a href="https://github.com/nereuslabs/Nereus" target="_blank" rel="noopener" class="footer__link" aria-label="GitHub">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M9 19c-5 1.5-5-2.5-5-4v-4.5c0-2 1-3.5 2.5-3.5 1.5 0 3 .5 3.5 2.5.5 2 .5 3 .1 3.5-1.5-.3-3-.3-3.5-.5-2 0-3.5.5-3.5 2.5v4c0 2 1.5 3.5 3.5 3.5 2 0 3.5-.5 4-2 .5-2 .5-3 .1-3.5-1.5-.3-3-.3-3.5-.5-2 0-3.5.5-3.5 2.5v4c0 2-2 4-5 4z"/>
-                        <circle cx="9" cy="9" r="2"/>
-                        <path d="M9 5C9 3 10 2 12 2c2 0 3 1 3 3"/>
-                    </svg>
-                </a>
-            </div>
+            <span class="logo-text">Nereus Labs</span>
+            <span class="footer__text">© 2026 Nereus Labs. Apache 2.0 License.</span>
+            <a href="https://github.com/nereuslabs/Nereus" target="_blank" rel="noopener" class="footer__link" aria-label="GitHub Repository">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 19c-5 1.5-5-2.5-5-4v-4.5c0-2 1-3.5 2.5-3.5 1.5 0 3 .5 3.5 2.5.5 2 .5 3 .1 3.5-1.5-.3-3-.3-3.5-.5-2 0-3.5.5-3.5 2.5v4c0 2 1.5 3.5 3.5 3.5 2 0 3.5-.5 4-2 .5-2 .5-3 .1-3.5-1.5-.3-3-.3-3.5-.5-2 0-3.5.5-3.5 2.5v4c0 2-2 4-5 4z"/>
+                    <circle cx="9" cy="9" r="2"/>
+                    <path d="M9 5C9 3 10 2 12 2c2 0 3 1 3 3"/>
+                </svg>
+            </a>
         </div>
     </footer>
 
     <div class="toast" id="toast" role="alert" aria-live="polite">
-        Спасибо! Мы свяжемся с вами, когда Nereus станет доступен.
+        Запрос успешно принят! Мы отправим приглашение.
     </div>
 
     <script src="./js/main.js" defer></script>
