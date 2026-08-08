@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nereus — Мультиагентный AI-тютор нового поколения</title>
-    <meta name="description" content="Nereus: Мультиагентный AI-тютор на базе LangGraph с локальным RAG-контекстом и персистентной памятью сессий. Проводит от плана до навыков за ~50 часов.">
+    <meta name="description"
+        content="Nereus: Мультиагентный AI-тютор на базе LangGraph с локальным RAG-контекстом и персистентной памятью сессий. Проводит от плана до навыков за ~50 часов.">
     <meta name="theme-color" content="#384959">
-    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="./assets/logo.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body>
     <a class="skip-link" data-i18n="skip-link" href="#content">Перейти к содержимому</a>
 
@@ -36,10 +41,14 @@
                 <div class="nav__actions">
                     <a href="#notify" class="btn btn--primary nav-cta" data-i18n="nav.cta">Ранний доступ</a>
                     <div class="lang-switcher">
-                         <button type="button" class="lang-switcher-btn" id="lang-switcher-btn" aria-label="Сменить язык" aria-haspopup="true" aria-expanded="false" aria-controls="lang-dropdown">
+                        <button type="button" class="lang-switcher-btn" id="lang-switcher-btn" aria-label="Сменить язык"
+                            aria-haspopup="true" aria-expanded="false" aria-controls="lang-dropdown">
                             <span id="lang-btn-flag">🇷🇺</span>
                             <span id="lang-btn-text">Русский</span>
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9" />
+                            </svg>
                         </button>
                         <div class="lang-dropdown" id="lang-dropdown">
                             <button type="button" class="lang-option" data-lang="ru">🇷🇺 Русский</button>
@@ -78,32 +87,44 @@
                             <span data-i18n="hero.badge">AGENT ENGINE v0.1.0 — OPEN SOURCE</span>
                         </div>
                         <h1 class="hero__title">
-                            <span data-i18n="hero.title">AI‑тютор нового поколения: от плана до навыков за </span><span class="hero__title-accent" data-i18n="hero.title.accent">~50 часов</span>
+                            <span data-i18n="hero.title">AI‑тютор нового поколения: от плана до навыков за </span><span
+                                class="hero__title-accent" data-i18n="hero.title.accent">~50 часов</span>
                         </h1>
                         <p class="hero__subtitle" data-i18n="hero.subtitle">
-                            Забудьте о пассивных видеокурсах. Nereus — это автономия мультиагентного графа (LangGraph) с локальным RAG-контекстом (ChromaDB) и персистентной памятью сессий.
+                            Забудьте о пассивных видеокурсах. Nereus — это автономия мультиагентного графа (LangGraph) с
+                            локальным RAG-контекстом (ChromaDB) и персистентной памятью сессий.
                         </p>
                         <div class="hero__actions">
                             <a href="#notify" class="btn btn--primary">
                                 <span data-i18n="hero.cta">Получить ранний доступ</span>
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                                    <line x1="5" y1="12" x2="19" y2="12"/>
-                                    <polyline points="12 5 19 12 12 19"/>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12" />
+                                    <polyline points="12 5 19 12 12 19" />
                                 </svg>
                             </a>
                             <a href="#how-it-works" class="btn btn--ghost" data-i18n="hero.ghost">Как работает граф</a>
                         </div>
                         <div class="hero__trust">
                             <span class="trust-item">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
                                 <span data-i18n="hero.trust1">100% Local (Ollama)</span>
                             </span>
                             <span class="trust-item">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
                                 <span data-i18n="hero.trust2">Apache 2.0 Open Source</span>
                             </span>
                             <span class="trust-item">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
                                 <span data-i18n="hero.trust3">Сохранение сессий</span>
                             </span>
                         </div>
@@ -130,9 +151,11 @@
         <section class="section" id="problem">
             <div class="container">
                 <div class="section__head text-center">
-                    <h2 class="section__title">[ <span data-i18n="problem.title">Почему стандартные способы обучения не работают</span>&nbsp;]</h2>
+                    <h2 class="section__title">[ <span data-i18n="problem.title">Почему стандартные способы обучения не
+                            работают</span>&nbsp;]</h2>
                     <p class="section__lead" data-i18n="problem.lead">
-                        Традиционные видеокурсы и обычные ИИ-чаты не справляются с глубоким усвоением сложных инженерных дисциплин.
+                        Традиционные видеокурсы и обычные ИИ-чаты не справляются с глубоким усвоением сложных инженерных
+                        дисциплин.
                     </p>
                 </div>
 
@@ -140,43 +163,49 @@
                     <div class="problem-card reveal">
                         <div class="problem-card__num">01</div>
                         <div class="problem-card__icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"/>
-                                <line x1="15" y1="9" x2="9" y2="15"/>
-                                <line x1="9" y1="9" x2="15" y2="15"/>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10" />
+                                <line x1="15" y1="9" x2="9" y2="15" />
+                                <line x1="9" y1="9" x2="15" y2="15" />
                             </svg>
                         </div>
                         <h3 class="problem-card__title" data-i18n="problem.card1.title">Галлюцинации и неточность</h3>
                         <p class="problem-card__text" data-i18n="problem.card1.text">
-                            Стандартные чат-боты склонны выдумывать несуществующие API и синтаксис. Nereus использует подлинный RAG-контекст из ChromaDB с жесткой привязкой к документации.
+                            Стандартные чат-боты склонны выдумывать несуществующие API и синтаксис. Nereus использует
+                            подлинный RAG-контекст из ChromaDB с жесткой привязкой к документации.
                         </p>
                     </div>
 
                     <div class="problem-card reveal">
                         <div class="problem-card__num">02</div>
                         <div class="problem-card__icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
                             </svg>
                         </div>
                         <h3 class="problem-card__title" data-i18n="problem.card2.title">Отсутствие памяти сессий</h3>
                         <p class="problem-card__text" data-i18n="problem.card2.text">
-                            Обычные диалоги сбрасывают контекст при каждом перезапуске. Nereus сохраняет состояние граф-автомата в локальную базу данных, позволяя продолжить обучение в любой момент.
+                            Обычные диалоги сбрасывают контекст при каждом перезапуске. Nereus сохраняет состояние
+                            граф-автомата в локальную базу данных, позволяя продолжить обучение в любой момент.
                         </p>
                     </div>
 
                     <div class="problem-card reveal">
                         <div class="problem-card__num">03</div>
                         <div class="problem-card__icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
-                                <line x1="8" y1="21" x2="16" y2="21"/>
-                                <line x1="12" y1="17" x2="12" y2="21"/>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                                <line x1="8" y1="21" x2="16" y2="21" />
+                                <line x1="12" y1="17" x2="12" y2="21" />
                             </svg>
                         </div>
                         <h3 class="problem-card__title" data-i18n="problem.card3.title">Пассивность видеопросмотра</h3>
                         <p class="problem-card__text" data-i18n="problem.card3.text">
-                            Пассивные лекции создают иллюзию понимания. Nereus держит в постоянном диалоге: Агент-Экзаменатор валидирует знания практикой и решает, переходить ли далее.
+                            Пассивные лекции создают иллюзию понимания. Nereus держит в постоянном диалоге:
+                            Агент-Экзаменатор валидирует знания практикой и решает, переходить ли далее.
                         </p>
                     </div>
                 </div>
@@ -187,9 +216,11 @@
         <section class="section" id="how-it-works">
             <div class="container">
                 <div class="section__head">
-                    <h2 class="section__title">[ <span data-i18n="orchestration.title">Мультиагентная система исполнения</span>&nbsp;]</h2>
+                    <h2 class="section__title">[ <span data-i18n="orchestration.title">Мультиагентная система
+                            исполнения</span>&nbsp;]</h2>
                     <p class="section__lead" data-i18n="orchestration.lead">
-                        Три специализированных агента координируют процесс обучения в едином цикле с автоматическим роутингом состояния.
+                        Три специализированных агента координируют процесс обучения в едином цикле с автоматическим
+                        роутингом состояния.
                     </p>
                 </div>
 
@@ -198,11 +229,14 @@
                         <div class="exec-step__icon">01</div>
                         <div class="exec-step__body">
                             <div class="exec-step__header">
-                                <h3 class="exec-step__title" data-i18n="orchestration.step1.title">Агент-Тренер — Генератор траектории</h3>
-                                <span class="exec-step__tag" data-i18n="orchestration.step1.tag">Агент-планировщик</span>
+                                <h3 class="exec-step__title" data-i18n="orchestration.step1.title">Агент-Тренер —
+                                    Генератор траектории</h3>
+                                <span class="exec-step__tag"
+                                    data-i18n="orchestration.step1.tag">Агент-планировщик</span>
                             </div>
                             <p class="exec-step__desc" data-i18n="orchestration.step1.desc">
-                                Анализирует исходный уровень пользователя, дробит глобальную цель на темы и строит динамический граф обучения с адаптивными маршрутами.
+                                Анализирует исходный уровень пользователя, дробит глобальную цель на темы и строит
+                                динамический граф обучения с адаптивными маршрутами.
                             </p>
                         </div>
                     </div>
@@ -211,11 +245,13 @@
                         <div class="exec-step__icon">02</div>
                         <div class="exec-step__body">
                             <div class="exec-step__header">
-                                <h3 class="exec-step__title" data-i18n="orchestration.step2.title">Агент-Репетитор — RAG-преподаватель</h3>
+                                <h3 class="exec-step__title" data-i18n="orchestration.step2.title">Агент-Репетитор —
+                                    RAG-преподаватель</h3>
                                 <span class="exec-step__tag" data-i18n="orchestration.step2.tag">Преподаватель</span>
                             </div>
                             <p class="exec-step__desc" data-i18n="orchestration.step2.desc">
-                                Извлекает проверенные контекстные чанки из векторной базы ChromaDB, генерирует пошаговые уроки и предлагает практические задания.
+                                Извлекает проверенные контекстные чанки из векторной базы ChromaDB, генерирует пошаговые
+                                уроки и предлагает практические задания.
                             </p>
                         </div>
                     </div>
@@ -224,13 +260,17 @@
                         <div class="exec-step__icon">03</div>
                         <div class="exec-step__body">
                             <div class="exec-step__header">
-                                <h3 class="exec-step__title" data-i18n="orchestration.step3.title">Агент-Экзаменатор — Валидатор и роутер</h3>
+                                <h3 class="exec-step__title" data-i18n="orchestration.step3.title">Агент-Экзаменатор —
+                                    Валидатор и роутер</h3>
                                 <span class="exec-step__tag" data-i18n="orchestration.step3.tag">Валидатор знаний</span>
                             </div>
                             <p class="exec-step__desc">
-                                <span data-i18n="orchestration.step3.desc.prefix">Проверяет глубину усвоения через контрольный диалог. Выполняет роутинг:</span>
-                                <span class="route-badge" data-i18n="orchestration.step3.route1">Усвоено</span> <span data-i18n="orchestration.step3.route.mid">(переход к следующей теме) или</span>
-                                <span class="route-badge" data-i18n="orchestration.step3.route2">Повтор</span> <span data-i18n="orchestration.step3.route.end">(закрепление материала).</span>
+                                <span data-i18n="orchestration.step3.desc.prefix">Проверяет глубину усвоения через
+                                    контрольный диалог. Выполняет роутинг:</span>
+                                <span class="route-badge" data-i18n="orchestration.step3.route1">Усвоено</span> <span
+                                    data-i18n="orchestration.step3.route.mid">(переход к следующей теме) или</span>
+                                <span class="route-badge" data-i18n="orchestration.step3.route2">Повтор</span> <span
+                                    data-i18n="orchestration.step3.route.end">(закрепление материала).</span>
                             </p>
                         </div>
                     </div>
@@ -242,7 +282,8 @@
         <section class="section" id="features">
             <div class="container">
                 <div class="section__head">
-                    <h2 class="section__title">[ <span data-i18n="features.title">Архитектурные преимущества Nereus</span>&nbsp;]</h2>
+                    <h2 class="section__title">[ <span data-i18n="features.title">Архитектурные преимущества
+                            Nereus</span>&nbsp;]</h2>
                     <p class="section__lead" data-i18n="features.lead">
                         Полная локальность, надежность RAG-контекста и персистентное сохранение прогресса.
                     </p>
@@ -251,54 +292,63 @@
                 <div class="mesh-grid reveal-stagger">
                     <div class="mesh-card reveal">
                         <div class="mesh-card__icon">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
-                                <line x1="12" y1="22.08" x2="12" y2="12"/>
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                                <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                                <line x1="12" y1="22.08" x2="12" y2="12" />
                             </svg>
                         </div>
                         <h3 class="mesh-card__title" data-i18n="features.card1.title">Контекст из ChromaDB (RAG)</h3>
                         <p class="mesh-card__text" data-i18n="features.card1.text">
-                            Векторные эмбеддинги гарантируют, что ИИ не галлюцинирует, а строго опирается на загруженную документацию, кодовую базу и учебники.
+                            Векторные эмбеддинги гарантируют, что ИИ не галлюцинирует, а строго опирается на загруженную
+                            документацию, кодовую базу и учебники.
                         </p>
                     </div>
 
                     <div class="mesh-card reveal">
                         <div class="mesh-card__icon">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                             </svg>
                         </div>
                         <h3 class="mesh-card__title" data-i18n="features.card2.title">100% Локальная приватность</h3>
                         <p class="mesh-card__text" data-i18n="features.card2.text">
-                            Запуск через Docker Compose и Ollama (Llama 3.2 / Qwen 2.5) означает, что ваши данные, диалоги и код не покидают ваш персональный компьютер.
+                            Запуск через Docker Compose и Ollama (Llama 3.2 / Qwen 2.5) означает, что ваши данные,
+                            диалоги и код не покидают ваш персональный компьютер.
                         </p>
                     </div>
 
                     <div class="mesh-card reveal">
                         <div class="mesh-card__icon">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"/>
-                                <polyline points="12 6 12 12 16 14"/>
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10" />
+                                <polyline points="12 6 12 12 16 14" />
                             </svg>
                         </div>
                         <h3 class="mesh-card__title" data-i18n="features.card3.title">Персистентная память сессий</h3>
                         <p class="mesh-card__text" data-i18n="features.card3.text">
-                            Память сессий сохраняется локально в базу данных. Вы можете сделать паузу в любой момент и продолжить строго с той же темы.
+                            Память сессий сохраняется локально в базу данных. Вы можете сделать паузу в любой момент и
+                            продолжить строго с той же темы.
                         </p>
                     </div>
 
                     <div class="mesh-card reveal">
                         <div class="mesh-card__icon">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="16 18 22 12 16 6"/>
-                                <polyline points="8 6 2 12 8 18"/>
-                                <line x1="12" y1="19" x2="12" y2="5"/>
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="16 18 22 12 16 6" />
+                                <polyline points="8 6 2 12 8 18" />
+                                <line x1="12" y1="19" x2="12" y2="5" />
                             </svg>
                         </div>
                         <h3 class="mesh-card__title" data-i18n="features.card4.title">Интерактивный контроль</h3>
                         <p class="mesh-card__text" data-i18n="features.card4.text">
-                            Поддержка ручного управления процессом обучения, корректировки текущего плана и естественной обратной связи с пользователем.
+                            Поддержка ручного управления процессом обучения, корректировки текущего плана и естественной
+                            обратной связи с пользователем.
                         </p>
                     </div>
                 </div>
@@ -309,9 +359,11 @@
         <section class="section section--accent" id="graph-demo">
             <div class="container">
                 <div class="section__head text-center">
-                    <h2 class="section__title">[ <span data-i18n="demo.title">Динамический граф агентов в действии</span>&nbsp;]</h2>
+                    <h2 class="section__title">[ <span data-i18n="demo.title">Динамический граф агентов в
+                            действии</span>&nbsp;]</h2>
                     <p class="section__lead" data-i18n="demo.lead">
-                        Агенты передают контекстные пакеты данных по циклическому графу с роутингом оценок Агента-Экзаменатора.
+                        Агенты передают контекстные пакеты данных по циклическому графу с роутингом оценок
+                        Агента-Экзаменатора.
                     </p>
                 </div>
 
@@ -329,7 +381,10 @@
                         </div>
                         <div class="chat-box__start-overlay" id="chat-start-overlay">
                             <button type="button" class="btn btn--primary" id="chat-start-btn">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <polygon points="5 3 19 12 5 21 5 3" />
+                                </svg>
                                 <span data-i18n="demo.start">Запустить</span>
                             </button>
                         </div>
@@ -359,13 +414,14 @@
                 <div class="tech-grid reveal-stagger">
                     <div class="tech-card reveal">
                         <div class="tech-card__icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="6" cy="6" r="3"/>
-                                <circle cx="18" cy="6" r="3"/>
-                                <circle cx="12" cy="18" r="3"/>
-                                <line x1="8.5" y1="7.5" x2="10" y2="15"/>
-                                <line x1="15.5" y1="7.5" x2="14" y2="15"/>
-                                <line x1="9" y1="6" x2="15" y2="6"/>
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="6" cy="6" r="3" />
+                                <circle cx="18" cy="6" r="3" />
+                                <circle cx="12" cy="18" r="3" />
+                                <line x1="8.5" y1="7.5" x2="10" y2="15" />
+                                <line x1="15.5" y1="7.5" x2="14" y2="15" />
+                                <line x1="9" y1="6" x2="15" y2="6" />
                             </svg>
                         </div>
                         <div class="tech-card__name">LangGraph</div>
@@ -374,9 +430,10 @@
 
                     <div class="tech-card reveal">
                         <div class="tech-card__icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
-                                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
                             </svg>
                         </div>
                         <div class="tech-card__name">LangChain</div>
@@ -385,11 +442,12 @@
 
                     <div class="tech-card reveal">
                         <div class="tech-card__icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="3" y="4" width="18" height="16" rx="4"/>
-                                <circle cx="9" cy="10" r="1.5" fill="currentColor"/>
-                                <circle cx="15" cy="10" r="1.5" fill="currentColor"/>
-                                <path d="M8 15h8"/>
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="4" width="18" height="16" rx="4" />
+                                <circle cx="9" cy="10" r="1.5" fill="currentColor" />
+                                <circle cx="15" cy="10" r="1.5" fill="currentColor" />
+                                <path d="M8 15h8" />
                             </svg>
                         </div>
                         <div class="tech-card__name">Ollama</div>
@@ -398,10 +456,11 @@
 
                     <div class="tech-card reveal">
                         <div class="tech-card__icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                <ellipse cx="12" cy="5" rx="9" ry="3"/>
-                                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
-                                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <ellipse cx="12" cy="5" rx="9" ry="3" />
+                                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
+                                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
                             </svg>
                         </div>
                         <div class="tech-card__name">ChromaDB</div>
@@ -410,11 +469,14 @@
 
                     <div class="tech-card reveal">
                         <div class="tech-card__icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 2C6.5 2 6 4 6 6v3h6v1H5C3 10 2 11.5 2 14s1 4 4 4h2v-3c0-2 1.5-3 3-3h5c1.5 0 3-1 3-3V6c0-2-1.5-4-5-4h-2z"/>
-                                <path d="M12 22c5.5 0 6-2 6-4v-3h-6v-1h7c2 0 3-1.5 3-4s-1-4-4-4h-2v3c0 2-1.5 3-3 3h-5c-1.5 0-3 1-3 3v5c0 2 1.5 4 5 4h2z"/>
-                                <circle cx="9" cy="5" r="1" fill="currentColor"/>
-                                <circle cx="15" cy="19" r="1" fill="currentColor"/>
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M12 2C6.5 2 6 4 6 6v3h6v1H5C3 10 2 11.5 2 14s1 4 4 4h2v-3c0-2 1.5-3 3-3h5c1.5 0 3-1 3-3V6c0-2-1.5-4-5-4h-2z" />
+                                <path
+                                    d="M12 22c5.5 0 6-2 6-4v-3h-6v-1h7c2 0 3-1.5 3-4s-1-4-4-4h-2v3c0 2-1.5 3-3 3h-5c-1.5 0-3 1-3 3v5c0 2 1.5 4 5 4h2z" />
+                                <circle cx="9" cy="5" r="1" fill="currentColor" />
+                                <circle cx="15" cy="19" r="1" fill="currentColor" />
                             </svg>
                         </div>
                         <div class="tech-card__name">Python 3.11+</div>
@@ -423,9 +485,11 @@
 
                     <div class="tech-card reveal">
                         <div class="tech-card__icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M22 12.5c0 1-.5 1.5-1.5 1.5h-17C2.5 14 2 13.5 2 12.5v-5C2 6.5 2.5 6 3.5 6h17c1 0 1.5.5 1.5 1.5v5z"/>
-                                <path d="M6 6V3M10 6V3M14 6V3M18 6V3"/>
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M22 12.5c0 1-.5 1.5-1.5 1.5h-17C2.5 14 2 13.5 2 12.5v-5C2 6.5 2.5 6 3.5 6h17c1 0 1.5.5 1.5 1.5v5z" />
+                                <path d="M6 6V3M10 6V3M14 6V3M18 6V3" />
                             </svg>
                         </div>
                         <div class="tech-card__name">Docker Compose</div>
@@ -434,9 +498,10 @@
 
                     <div class="tech-card reveal">
                         <div class="tech-card__icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="3" y="3" width="18" height="18" rx="3"/>
-                                <path d="M3 9h18M3 15h18M9 3v18"/>
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="3" width="18" height="18" rx="3" />
+                                <path d="M3 9h18M3 15h18M9 3v18" />
                             </svg>
                         </div>
                         <div class="tech-card__name">SQLite / Redis</div>
@@ -445,8 +510,9 @@
 
                     <div class="tech-card reveal">
                         <div class="tech-card__icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
                             </svg>
                         </div>
                         <div class="tech-card__name">Chainlit UI</div>
@@ -455,9 +521,10 @@
 
                     <div class="tech-card reveal">
                         <div class="tech-card__icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                                <polyline points="9 12 11 14 15 10"/>
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                <polyline points="9 12 11 14 15 10" />
                             </svg>
                         </div>
                         <div class="tech-card__name">Pydantic</div>
@@ -471,9 +538,11 @@
         <section class="section" id="progress">
             <div class="container">
                 <div class="section__head">
-                    <h2 class="section__title">[ <span data-i18n="roadmap.title">Дорожная карта разработки</span>&nbsp;]</h2>
+                    <h2 class="section__title">[ <span data-i18n="roadmap.title">Дорожная карта разработки</span>&nbsp;]
+                    </h2>
                     <p class="section__lead">
-                        <span data-i18n="roadmap.lead">Задачи и их статусы подгружаются напрямую из репозитория</span> <code>nereuslabs/Nereus</code>.
+                        <span data-i18n="roadmap.lead">Задачи и их статусы подгружаются напрямую из репозитория</span>
+                        <code>nereuslabs/Nereus</code>.
                     </p>
                 </div>
 
@@ -486,14 +555,16 @@
                                 <div class="timeline__dot timeline__dot--done">✓</div>
                                 <div class="timeline__content">
                                     <h3 class="timeline__title">Базовый автомат-агент LangGraph</h3>
-                                    <span class="timeline__status status--done" data-i18n="roadmap.status.done">Завершено</span>
+                                    <span class="timeline__status status--done"
+                                        data-i18n="roadmap.status.done">Завершено</span>
                                 </div>
                             </div>
                             <div class="timeline__item reveal">
                                 <div class="timeline__dot timeline__dot--done">✓</div>
                                 <div class="timeline__content">
                                     <h3 class="timeline__title">Персистентные чекпоинты и восстановление сессий</h3>
-                                    <span class="timeline__status status--done" data-i18n="roadmap.status.done">Завершено</span>
+                                    <span class="timeline__status status--done"
+                                        data-i18n="roadmap.status.done">Завершено</span>
                                 </div>
                             </div>
                         </div>
@@ -505,7 +576,8 @@
                                 <div class="timeline__dot timeline__dot--active">●</div>
                                 <div class="timeline__content">
                                     <h3 class="timeline__title">Дамп и загрузка состояний графа</h3>
-                                    <span class="timeline__status status--active" data-i18n="roadmap.status.active">В разработке</span>
+                                    <span class="timeline__status status--active" data-i18n="roadmap.status.active">В
+                                        разработке</span>
                                 </div>
                             </div>
                         </div>
@@ -518,32 +590,36 @@
         <section class="section" id="reviews">
             <div class="container">
                 <div class="section__head">
-                    <h2 class="section__title">[ <span data-i18n="reviews.title">Ранние отзывы инженеров</span>&nbsp;]</h2>
+                    <h2 class="section__title">[ <span data-i18n="reviews.title">Ранние отзывы инженеров</span>&nbsp;]
+                    </h2>
                 </div>
 
                 <div class="reviews-grid reveal-stagger">
                     <div class="review-card reveal">
                         <p class="review-card__text" data-i18n="reviews.card1.text">
-                            «Разобрался с LangGraph и условными эджами за 3 дня вместо 3 недель благодаря интерактивной сдаче тем Агенту-Экзаменатору.»
+                            «Разобрался с LangGraph и условными эджами за 3 дня вместо 3 недель благодаря интерактивной
+                            сдаче тем Агенту-Экзаменатору.»
                         </p>
                         <div class="review-card__user">
                             <span class="review-card__avatar">ИП</span>
                             <div>
                                 <div class="review-card__name" data-i18n="reviews.card1.name">Иван П.</div>
-                                <div class="review-card__role" data-i18n="reviews.card1.role">Backend / Python Developer</div>
+                                <div class="review-card__role" data-i18n="reviews.card1.role">Backend / Python Developer
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="review-card reveal">
-                            <p class="review-card__text" data-i18n="reviews.card2.text">
-                                «Понимание RAG-контекста и векторизации закрепилось через диалоговую проверку Агента-Экзаменатора гораздо лучше, чем от обычного просмотра видео.»
-                            </p>
-                            <div class="review-card__user">
-                                <span class="review-card__avatar">АС</span>
-                                <div>
-                                    <div class="review-card__name" data-i18n="reviews.card2.name">Анна С.</div>
-                                    <div class="review-card__role" data-i18n="reviews.card2.role">Frontend Engineer</div>
+                        <p class="review-card__text" data-i18n="reviews.card2.text">
+                            «Понимание RAG-контекста и векторизации закрепилось через диалоговую проверку
+                            Агента-Экзаменатора гораздо лучше, чем от обычного просмотра видео.»
+                        </p>
+                        <div class="review-card__user">
+                            <span class="review-card__avatar">АС</span>
+                            <div>
+                                <div class="review-card__name" data-i18n="reviews.card2.name">Анна С.</div>
+                                <div class="review-card__role" data-i18n="reviews.card2.role">Frontend Engineer</div>
                             </div>
                         </div>
                     </div>
@@ -562,13 +638,16 @@
                     <div class="faq-item reveal">
                         <button type="button" class="faq-button" aria-expanded="false">
                             <span data-i18n="faq.q1">Как работает мультиагентная система Nereus?</span>
-                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="6 9 12 15 18 9"/>
+                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9" />
                             </svg>
                         </button>
                         <div class="faq-content">
                             <div class="faq-inner" data-i18n="faq.a1">
-                                Nereus использует оркестратор LangGraph для создания государственного граф-автомата со специализированными агентами: Агент-Тренер строит карту тем, Агент-Репетитор извлекает RAG-контекст из ChromaDB, а Агент-Экзаменатор проверяет усвоение с роутингом оценок.
+                                Nereus использует оркестратор LangGraph для создания государственного граф-автомата со
+                                специализированными агентами: Агент-Тренер строит карту тем, Агент-Репетитор извлекает
+                                RAG-контекст из ChromaDB, а Агент-Экзаменатор проверяет усвоение с роутингом оценок.
                             </div>
                         </div>
                     </div>
@@ -576,13 +655,16 @@
                     <div class="faq-item reveal">
                         <button type="button" class="faq-button" aria-expanded="false">
                             <span data-i18n="faq.q2">Поддерживается ли 100% локальный запуск без сторонних API?</span>
-                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="6 9 12 15 18 9"/>
+                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9" />
                             </svg>
                         </button>
                         <div class="faq-content">
                             <div class="faq-inner" data-i18n="faq.a2">
-                                Да, абсолутно. Проект запускается одной командой через Docker Compose: локальная LLM работает в Ollama (Llama 3.2 / Qwen 2.5), векторное хранилище — в ChromaDB. Ваши данные и прогресс не покидают ваш компьютер.
+                                Да, абсолутно. Проект запускается одной командой через Docker Compose: локальная LLM
+                                работает в Ollama (Llama 3.2 / Qwen 2.5), векторное хранилище — в ChromaDB. Ваши данные
+                                и прогресс не покидают ваш компьютер.
                             </div>
                         </div>
                     </div>
@@ -590,13 +672,15 @@
                     <div class="faq-item reveal">
                         <button type="button" class="faq-button" aria-expanded="false">
                             <span data-i18n="faq.q3">Как устроена персистентность сессий и возобновление?</span>
-                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="6 9 12 15 18 9"/>
+                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9" />
                             </svg>
                         </button>
                         <div class="faq-content">
                             <div class="faq-inner" data-i18n="faq.a3">
-                                Состояние графа сохраняется в локальную базу данных. При остановке Nereus восстановит тему, контекст и пройденные этапы с точностью до последнего диалогового шага.
+                                Состояние графа сохраняется в локальную базу данных. При остановке Nereus восстановит
+                                тему, контекст и пройденные этапы с точностью до последнего диалогового шага.
                             </div>
                         </div>
                     </div>
@@ -604,13 +688,16 @@
                     <div class="faq-item reveal">
                         <button type="button" class="faq-button" aria-expanded="false">
                             <span data-i18n="faq.q4">Проект бесплатный и open-source? Как получить доступ?</span>
-                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="6 9 12 15 18 9"/>
+                            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9" />
                             </svg>
                         </button>
                         <div class="faq-content">
                             <div class="faq-inner" data-i18n="faq.a4">
-                                Основной движок Nereus открыт и распространяется под лицензией MIT в официальном репозитории. Вы можете зарегистрироваться в форме ниже для получения объявлений о тестировании или форкнуть исходный код на GitHub.
+                                Основной движок Nereus открыт и распространяется под лицензией MIT в официальном
+                                репозитории. Вы можете зарегистрироваться в форме ниже для получения объявлений о
+                                тестировании или форкнуть исходный код на GitHub.
                             </div>
                         </div>
                     </div>
@@ -621,18 +708,21 @@
         <!-- ===== CTA SECTION ===== -->
         <section class="section" id="notify">
             <div class="container">
-                    <div class="cta-block reveal">
-                        <div class="cta__header">
-                            <span class="badge-dot"></span>
-                            <span data-i18n="cta.badge">EARLY ACCESS PROGRAM</span>
-                        </div>
-                        <h2 class="cta__title" data-i18n="cta.title">Будьте в числе первых</h2>
-                        <p class="cta__text" data-i18n="cta.text">
-                        Остановите хаотичное изучение. Запросите приглашение в бета-тест Nereus или присоединяйтесь к разработке в open-source.
+                <div class="cta-block reveal">
+                    <div class="cta__header">
+                        <span class="badge-dot"></span>
+                        <span data-i18n="cta.badge">EARLY ACCESS PROGRAM</span>
+                    </div>
+                    <h2 class="cta__title" data-i18n="cta.title">Будьте в числе первых</h2>
+                    <p class="cta__text" data-i18n="cta.text">
+                        Остановите хаотичное изучение. Запросите приглашение в бета-тест Nereus или присоединяйтесь к
+                        разработке в open-source.
                     </p>
                     <form class="cta__form" id="notify-form" novalidate>
                         <div class="cta__input-wrap">
-                            <input type="email" name="email" id="cta-email" placeholder="dev@example.com" required autocomplete="email" data-i18n="cta.placeholder" aria-label="Ваш email для раннего доступа">
+                            <input type="email" name="email" id="cta-email" placeholder="dev@example.com" required
+                                autocomplete="email" data-i18n="cta.placeholder"
+                                aria-label="Ваш email для раннего доступа">
                             <span class="input-error-msg" id="email-error"></span>
                         </div>
                         <button type="submit" class="btn btn--primary" id="cta-submit-btn">
@@ -640,8 +730,12 @@
                         </button>
                     </form>
                     <div class="cta__links">
-                        <a href="https://github.com/nereuslabs/Nereus" target="_blank" rel="noopener" class="btn btn--ghost">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                        <a href="https://github.com/nereuslabs/Nereus" target="_blank" rel="noopener"
+                            class="btn btn--ghost">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                            </svg>
                             <span data-i18n="cta.github">Исходный код на GitHub</span>
                         </a>
                     </div>
@@ -652,14 +746,17 @@
     </main>
 
     <!-- ===== COMMAND PALETTE MODAL (⌘K / Ctrl+K) ===== -->
-    <div class="cmd-modal" id="cmd-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Командная панель">
+    <div class="cmd-modal" id="cmd-modal" role="dialog" aria-modal="true" aria-hidden="true"
+        aria-label="Командная панель">
         <div class="cmd-box">
             <div class="cmd-header">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="11" cy="11" r="8"/>
-                    <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
                 </svg>
-                <input type="text" id="cmd-input" placeholder="Введите команду или раздел..." autocomplete="off" data-i18n="cmd.input.placeholder">
+                <input type="text" id="cmd-input" placeholder="Введите команду или раздел..." autocomplete="off"
+                    data-i18n="cmd.input.placeholder">
             </div>
             <div class="cmd-list" id="cmd-list">
                 <div class="cmd-item" data-action="goto" data-target="#problem">
@@ -702,19 +799,22 @@
                 <span class="logo-text">Nereus Labs</span>
             </div>
             <span class="footer__text" data-i18n="footer.copy">© 2026 Nereus Labs. Apache 2.0 License.</span>
-            <a href="https://github.com/nereuslabs/Nereus" target="_blank" rel="noopener" class="footer__link" aria-label="GitHub Repository">
+            <a href="https://github.com/nereuslabs/Nereus" target="_blank" rel="noopener" class="footer__link"
+                aria-label="GitHub Repository">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                    <path
+                        d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
                 </svg>
             </a>
         </div>
     </footer>
 
-        <div class="toast" id="toast" role="alert" aria-live="polite" data-i18n="toast.default">
+    <div class="toast" id="toast" role="alert" aria-live="polite" data-i18n="toast.default">
         Запрос успешно принят! Мы свяжемся с вами при запуске тестирования.
     </div>
 
     <script src="./js/i18n.js" defer></script>
     <script src="./js/main.js" defer></script>
 </body>
+
 </html>
