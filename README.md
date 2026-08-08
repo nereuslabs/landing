@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Nereus landing
 
 Сайт‑лендинг для проекта [Nereus](https://github.com/nereuslabs/Nereus) —
@@ -40,5 +39,3 @@ python -m http.server 8080
 
 Apache 2.0. Сайт и его контент принадлежат организации **Nereus Labs**.
 Исходный движок Nereus лицензирован отдельно — MIT (см. `nereuslabs/Nereus`).
-=======
->>>>>>> dc4fa0c (feat: implement core site interactivity including header scroll/drag, menu toggle, email validation, FAQ accordion, and command palette.)
