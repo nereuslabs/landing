@@ -38,4 +38,4 @@ python -m http.server 8080
 ## Лицензия
 
 Apache 2.0. Сайт и его контент принадлежат организации **Nereus Labs**.
-Исходный движок Nereus лицензирован отдельно — MIT (см. `nereuslabs/Nereus`).
+Исходный код движка Nereus также лицензирован по Apache 2.0 (см. `nereuslabs/Nereus`).
