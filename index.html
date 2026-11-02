@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nereus — Terminal-First Socratic AI Programming Mentor</title>
-  <meta name="description" content="Nereus is an open-source terminal AI programming mentor built in Rust. It compiles your code in an isolated sandbox and guides you with Socratic counter-questions instead of leaking answers.">
+  <title>Nereus — Socratic Sparring Partner for Systems Engineers</title>
+  <meta name="description" content="Nereus is an open-source terminal sparring partner built in Rust. It pairs an uncompromising compiler with a Socratic examiner to build genuine engineering intuition.">
 
-  <!-- Tailwind CSS & Fonts -->
+  <!-- Tailwind CSS & Google Fonts -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +16,7 @@
   <style>
     /* =================================================================
        MINIMAL DESIGN SYSTEM v2.0
-       HSL-based Semantic Color Tokens with Auto Dark Mode
+       Semantic HSL Design Tokens & Auto Dark Mode Symmetry
        ================================================================= */
     :root {
       --background: 0 0% 100%;
@@ -91,15 +91,15 @@
   <header class="sticky top-0 z-50 border-b border-default bg-[hsl(var(--background))]/90 backdrop-blur supports-[backdrop-filter]:bg-[hsl(var(--background))]/70">
     <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
       <a href="#" class="flex items-center gap-3 font-semibold tracking-tight text-lg">
-        <img src="assets/logo.svg" alt="Nereus Logo" class="w-7 h-7 rounded">
+        <img src="assets/logo.svg" alt="Nereus Socratic Lighthouse" class="w-7 h-7 rounded">
         <span>Nereus</span>
         <span class="text-xs px-2 py-0.5 rounded bg-muted text-muted font-mono font-normal">v2.0 rust</span>
       </a>
 
       <nav class="hidden md:flex items-center gap-8 text-sm text-muted">
-        <a href="#socratic" class="hover:text-[hsl(var(--foreground))] transition-colors">Methodology</a>
-        <a href="#agents" class="hover:text-[hsl(var(--foreground))] transition-colors">Automaton</a>
-        <a href="#terminal" class="hover:text-[hsl(var(--foreground))] transition-colors">Terminal Cockpit</a>
+        <a href="#sparring" class="hover:text-[hsl(var(--foreground))] transition-colors">Sparring Ring</a>
+        <a href="#philosophy" class="hover:text-[hsl(var(--foreground))] transition-colors">Philosophy</a>
+        <a href="#automaton" class="hover:text-[hsl(var(--foreground))] transition-colors">Automaton</a>
         <a href="#quickstart" class="hover:text-[hsl(var(--foreground))] transition-colors">Quickstart</a>
       </nav>
 
@@ -109,7 +109,7 @@
             <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
             <path d="M9 18c-4.51 2-5-2-7-2"/>
           </svg>
-          <span>Star on GitHub</span>
+          <span>Star</span>
         </a>
       </div>
     </div>
@@ -124,22 +124,22 @@
         <div class="max-w-3xl">
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-default bg-muted text-xs text-muted font-mono mb-8">
             <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-            <span>Open Source • Built in Rust • MIT Licensed</span>
+            <span>A cognitive gym for systems programming</span>
           </div>
 
           <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-8 leading-[1.12]">
-            The terminal AI mentor that doesn't write the code for you.
+            Stop outsourcing your thinking.
           </h1>
 
           <p class="text-lg md:text-xl text-muted leading-relaxed mb-10 max-w-2xl">
-            Nereus runs an execution-driven learning automaton. It diagnoses skill gaps, compiles your code inside an isolated sandbox, and guides you to genuine mastery through Socratic counter-questions.
+            Nereus is a terminal-native sparring partner. It pairs an uncompromising compiler with a Socratic examiner to build genuine engineering intuition — without ever leaking the answer.
           </p>
 
           <div class="flex flex-wrap items-center gap-4">
             <div class="inline-flex items-center gap-3 h-11 px-4 bg-muted border border-default rounded-md font-mono text-sm">
               <span class="text-muted select-none">$</span>
               <span id="cargo-cmd">cargo install nereus</span>
-              <button id="copy-btn" class="text-muted hover:text-[hsl(var(--foreground))] transition-colors p-1" title="Copy to clipboard" aria-label="Copy install command">
+              <button id="copy-btn" class="text-muted hover:text-[hsl(var(--foreground))] transition-colors p-1" title="Copy install command" aria-label="Copy install command">
                 <svg id="copy-icon" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
                   <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
@@ -150,89 +150,77 @@
               </button>
             </div>
 
-            <a href="https://github.com/nereuslabs/nereus" target="_blank" rel="noopener" class="inline-flex items-center justify-center h-11 px-6 bg-primary text-primary-foreground text-sm font-medium rounded-md hover:opacity-90 transition-opacity">
-              Explore Repository
+            <a href="#sparring" class="inline-flex items-center justify-center h-11 px-6 bg-primary text-primary-foreground text-sm font-medium rounded-md hover:opacity-90 transition-opacity">
+              Enter Sparring Ring
             </a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Interactive Terminal Cockpit Preview -->
-    <section id="terminal" class="py-16 border-t border-default bg-[hsl(var(--secondary))]/30">
+    <!-- The Interactive Sparring Ring -->
+    <section id="sparring" class="py-20 border-t border-default bg-[hsl(var(--secondary))]/30">
       <div class="max-w-5xl mx-auto px-6">
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
           <div>
-            <h2 class="text-2xl font-semibold tracking-tight mb-2">Live Socratic Inspection</h2>
-            <p class="text-sm text-muted">Test how the examiner responds to failing compiler passes in real time.</p>
+            <h2 class="text-2xl font-semibold tracking-tight mb-2">The Sparring Ring</h2>
+            <p class="text-sm text-muted">Compare how a generic AI chatbot responds vs. how Nereus trains your intuition.</p>
           </div>
 
-          <!-- Terminal Tabs -->
+          <!-- Sparring Topic Selector -->
           <div class="flex items-center gap-2 p-1 bg-muted rounded-lg border border-default text-xs font-mono">
-            <button class="tab-btn px-3 py-1.5 rounded-md font-medium bg-[hsl(var(--background))] text-[hsl(var(--foreground))] shadow-sm transition-all" data-tab="lifetimes">Kata 1: Ownership</button>
-            <button class="tab-btn px-3 py-1.5 rounded-md text-muted hover:text-[hsl(var(--foreground))] transition-all" data-tab="tokio">Kata 2: Tokio MPSC</button>
-            <button class="tab-btn px-3 py-1.5 rounded-md text-muted hover:text-[hsl(var(--foreground))] transition-all" data-tab="pinning">Kata 3: Pin Projection</button>
+            <button class="kata-btn px-3 py-1.5 rounded-md font-medium bg-[hsl(var(--background))] text-[hsl(var(--foreground))] shadow-sm transition-all" data-kata="deadlock">1. Mutex Deadlock</button>
+            <button class="kata-btn px-3 py-1.5 rounded-md text-muted hover:text-[hsl(var(--foreground))] transition-all" data-kata="lifetimes">2. Async Borrow</button>
+            <button class="kata-btn px-3 py-1.5 rounded-md text-muted hover:text-[hsl(var(--foreground))] transition-all" data-kata="alloc">3. Hidden Allocations</button>
           </div>
         </div>
 
-        <!-- Terminal Window Frame -->
+        <!-- Sparring Arena Container -->
         <div class="rounded-lg border border-default bg-[hsl(var(--background))] overflow-hidden shadow-sm">
-          <!-- Terminal Header -->
-          <div class="px-4 py-3 border-b border-default bg-muted/40 flex items-center justify-between text-xs font-mono text-muted">
+          <!-- Arena Header -->
+          <div class="px-5 py-3 border-b border-default bg-muted/40 flex items-center justify-between text-xs font-mono text-muted">
             <div class="flex items-center gap-2">
               <span class="w-2.5 h-2.5 rounded-full bg-red-500/80"></span>
               <span class="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></span>
               <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
-              <span class="ml-2 font-medium text-[hsl(var(--foreground))]">nereus-tui — kata_evaluator.rs</span>
+              <span class="ml-2 font-medium text-[hsl(var(--foreground))]" id="kata-title">kata_01_asymmetric_locking.rs</span>
             </div>
-            <span class="text-xs px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">Sandbox: Isolated</span>
+            <span class="text-xs px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">Compiler: Strict</span>
           </div>
 
-          <!-- Terminal Content Grid -->
-          <div class="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-[hsl(var(--border))] font-mono text-xs">
-            <!-- Left Pane: Code & Compiler Output -->
-            <div class="p-6 overflow-x-auto space-y-4">
-              <div class="text-muted flex items-center justify-between">
-                <span>// Student Submission (Rust 2021)</span>
-                <span id="tab-lang" class="text-muted">src/worker.rs</span>
-              </div>
-              <pre id="code-snippet" class="text-sm leading-relaxed text-[hsl(var(--foreground))]">// Loading code...</pre>
+          <!-- Code Inspection Pane -->
+          <div class="p-6 border-b border-default overflow-x-auto bg-[hsl(var(--background))]">
+            <div class="text-xs font-mono text-muted mb-2">// Vulnerable student implementation:</div>
+            <pre id="kata-code" class="text-sm font-mono leading-relaxed text-[hsl(var(--foreground))]"></pre>
+          </div>
 
-              <div class="pt-4 border-t border-default space-y-2">
-                <div class="flex items-center justify-between text-muted text-xs">
-                  <span>$ cargo test --quiet</span>
-                  <span class="text-red-500 font-semibold" id="compiler-status">FAILED [E0382]</span>
-                </div>
-                <div id="compiler-output" class="p-3 rounded bg-red-500/10 border border-red-500/20 text-red-600 dark:text-red-400 text-xs leading-relaxed font-mono">
-                  error[E0382]: use of moved value: `tx`
-                </div>
+          <!-- Comparative Response Split -->
+          <div class="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-[hsl(var(--border))] text-xs font-mono">
+            <!-- Left: Standard Chatbot Flaw -->
+            <div class="p-6 space-y-3 bg-red-500/5">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold text-red-500 flex items-center gap-1.5">
+                  <span>✕</span> Standard Chatbot (Passive Brain Rot)
+                </span>
+                <span class="text-xs text-muted">Overfitting</span>
+              </div>
+              <p class="text-muted leading-relaxed" id="chatbot-response"></p>
+              <div class="p-3 rounded bg-red-500/10 border border-red-500/20 text-red-600 dark:text-red-400">
+                Outcome: You copy-paste the fix, skip the deadlock theory, and repeat the same architectural bug in production.
               </div>
             </div>
 
-            <!-- Right Pane: Socratic Examiner Feedback -->
-            <div class="p-6 flex flex-col justify-between space-y-6 bg-muted/10">
-              <div class="space-y-4">
-                <div class="flex items-center justify-between">
-                  <span class="text-xs font-semibold text-[hsl(var(--foreground))] uppercase tracking-wider">Examiner Verdict</span>
-                  <span id="score-badge" class="text-xs px-2.5 py-1 rounded-full bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 border border-yellow-500/20">RETRY · Score: 60/100</span>
-                </div>
-
-                <div class="p-4 rounded-lg border border-default bg-card space-y-3">
-                  <div class="flex items-center gap-2 text-xs font-semibold text-[hsl(var(--foreground))]">
-                    <svg class="w-4 h-4 text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-                    </svg>
-                    <span>Socratic Guidance (No Leaked Code)</span>
-                  </div>
-                  <p id="socratic-prompt" class="text-xs text-muted leading-relaxed font-mono">
-                    "Notice that `tx` was captured by the first spawned task by value. What happens when the second task attempts to use the same handle? How does cloning a sender before moving satisfy the borrow checker without changing receiver capacity?"
-                  </p>
-                </div>
+            <!-- Right: Nereus Socratic Sparring -->
+            <div class="p-6 space-y-3 bg-emerald-500/5">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold text-emerald-500 flex items-center gap-1.5">
+                  <span>✓</span> Nereus Socratic Examiner (Mastery)
+                </span>
+                <span class="text-xs text-muted">Retain Logic</span>
               </div>
-
-              <div class="pt-4 border-t border-default flex items-center justify-between text-xs text-muted">
-                <span>Pass Threshold: ≥75.0</span>
-                <span class="font-mono">FSM State: <strong class="text-[hsl(var(--foreground))]">Examining</strong></span>
+              <p class="text-[hsl(var(--foreground))] leading-relaxed" id="nereus-response"></p>
+              <div class="p-3 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400">
+                Outcome: You discover lock hierarchy invariants yourself. The mental model becomes permanent.
               </div>
             </div>
           </div>
@@ -240,184 +228,167 @@
       </div>
     </section>
 
-    <!-- Methodology Comparison -->
-    <section id="socratic" class="py-24 border-t border-default">
+    <!-- The Three Pillars of the Nereus Philosophy -->
+    <section id="philosophy" class="py-24 border-t border-default">
       <div class="max-w-5xl mx-auto px-6">
         <div class="max-w-2xl mb-16">
-          <h2 class="text-3xl font-bold tracking-tight mb-4">Why Socratic mentorship matters</h2>
+          <h2 class="text-3xl font-bold tracking-tight mb-4">The Antidote to AI Brain Rot</h2>
           <p class="text-muted leading-relaxed">
-            Most AI tools act like eager assistants that dump answers into your editor. You get instant code, but retain zero mental model. Nereus forces you to build the intuition.
+            When tools think on your behalf, your judgment atrophies. Nereus turns the AI into a sparring partner that tests, challenges, and sharpens your capabilities.
           </p>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-8">
-          <!-- Standard AI Card -->
-          <article class="p-8 rounded-lg border border-default bg-card">
-            <div class="flex items-center gap-3 mb-6">
-              <span class="w-2 h-2 rounded-full bg-red-500"></span>
-              <h3 class="font-semibold text-lg">Standard AI Chatbots</h3>
-            </div>
-            <ul class="space-y-4 text-sm text-muted">
-              <li class="flex items-start gap-3">
-                <span class="text-red-500 font-bold select-none">✕</span>
-                <span>Instantly leaks the full code solution, creating an illusion of competence without neural retention.</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="text-red-500 font-bold select-none">✕</span>
-                <span>Overly flattering tone that validates incorrect assumptions instead of demanding proof.</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="text-red-500 font-bold select-none">✕</span>
-                <span>No isolated test harness; cannot verify if code actually compiles or passes edge cases.</span>
-              </li>
-            </ul>
+        <div class="grid md:grid-cols-3 gap-8">
+          <article class="p-6 rounded-lg border border-default bg-card">
+            <div class="font-mono text-xs text-muted mb-4">PILLAR 01</div>
+            <h3 class="font-semibold text-lg mb-3">Active Recall over Autocomplete</h3>
+            <p class="text-sm text-muted leading-relaxed">
+              Autocomplete trains your fingers to accept suggestions. Nereus trains your mind to foresee edge cases. You write every line; Nereus only asks questions when your reasoning breaks down.
+            </p>
           </article>
 
-          <!-- Nereus Method Card -->
-          <article class="p-8 rounded-lg border border-default bg-card relative">
-            <div class="flex items-center gap-3 mb-6">
-              <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-              <h3 class="font-semibold text-lg">The Nereus Method</h3>
-            </div>
-            <ul class="space-y-4 text-sm text-muted">
-              <li class="flex items-start gap-3">
-                <span class="text-emerald-500 font-bold select-none">✓</span>
-                <span>Asks counter-questions targeting the exact compiler diagnostic or logic flaw you introduced.</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="text-emerald-500 font-bold select-none">✓</span>
-                <span>Executes your code in a hermetic sandbox against hidden test assertions before rendering judgment.</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="text-emerald-500 font-bold select-none">✓</span>
-                <span>Maintains an objective weakness report and adapts future katas to your diagnosed failure modes.</span>
-              </li>
-            </ul>
+          <article class="p-6 rounded-lg border border-default bg-card">
+            <div class="font-mono text-xs text-muted mb-4">PILLAR 02</div>
+            <h3 class="font-semibold text-lg mb-3">Sandboxed Compiler Verification</h3>
+            <p class="text-sm text-muted leading-relaxed">
+              No fuzzy LLM scoring. Every submission compiles against real borrow check invariants, static analyzers, and test harnesses inside an isolated sandbox before the examiner evaluates your mental model.
+            </p>
+          </article>
+
+          <article class="p-6 rounded-lg border border-default bg-card">
+            <div class="font-mono text-xs text-muted mb-4">PILLAR 03</div>
+            <h3 class="font-semibold text-lg mb-3">Persistent Weakness Graph</h3>
+            <p class="text-sm text-muted leading-relaxed">
+              Nereus keeps an objective SQLite trace of your cognitive blind spots. If you consistently struggle with asynchronous lifetimes or cache invalidation, future katas systematically attack those vulnerabilities.
+            </p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- The 4-Agent Automaton -->
-    <section id="agents" class="py-24 border-t border-default bg-[hsl(var(--secondary))]/30">
+    <!-- The 4-Stage Automaton -->
+    <section id="automaton" class="py-24 border-t border-default bg-[hsl(var(--secondary))]/30">
       <div class="max-w-5xl mx-auto px-6">
         <div class="max-w-2xl mb-16">
-          <h2 class="text-3xl font-bold tracking-tight mb-4">A deterministic learning lifecycle</h2>
+          <h2 class="text-3xl font-bold tracking-tight mb-4">The 4-Stage Sparring Automaton</h2>
           <p class="text-muted leading-relaxed">
-            Instead of an unpredictable conversational loop, Nereus coordinates four specialized agents as an algebraic finite state machine.
+            An algebraic finite state machine modeled in pure Rust. No open-ended chat loops, no unpredictable tangents.
           </p>
         </div>
 
         <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
-          <!-- Step 1 -->
-          <article class="p-6 rounded-lg border border-default bg-card">
-            <div class="font-mono text-xs text-muted mb-4">STAGE 01</div>
-            <h3 class="font-semibold text-base mb-2">Diagnostic Agent</h3>
+          <div class="p-6 rounded-lg border border-default bg-card">
+            <div class="font-mono text-xs text-muted mb-3">STAGE 1</div>
+            <h3 class="font-semibold text-base mb-2">Diagnostic Gauntlet</h3>
             <p class="text-sm text-muted leading-relaxed mb-4">
-              Probes syntax, memory semantics, and error handling through an initial adaptive quiz.
+              Probes syntax, memory boundaries, and error patterns through an adaptive quiz to uncover real gaps.
             </p>
             <div class="text-xs font-mono text-muted pt-3 border-t border-default">
-              Output: <span class="text-[hsl(var(--foreground))]">WeaknessReport</span>
+              Contract: <span class="text-[hsl(var(--foreground))]">WeaknessReport</span>
             </div>
-          </article>
+          </div>
 
-          <!-- Step 2 -->
-          <article class="p-6 rounded-lg border border-default bg-card">
-            <div class="font-mono text-xs text-muted mb-4">STAGE 02</div>
-            <h3 class="font-semibold text-base mb-2">Coach Agent</h3>
+          <div class="p-6 rounded-lg border border-default bg-card">
+            <div class="font-mono text-xs text-muted mb-3">STAGE 2</div>
+            <h3 class="font-semibold text-base mb-2">Milestone Coach</h3>
             <p class="text-sm text-muted leading-relaxed mb-4">
-              Synthesizes your goals, deadlines, and diagnostic weaknesses into a dependency-ordered roadmap.
+              Synthesizes your diagnosed gaps into an ordered tree of dependencies, prioritizing high-friction topics.
             </p>
             <div class="text-xs font-mono text-muted pt-3 border-t border-default">
-              Output: <span class="text-[hsl(var(--foreground))]">PrioritizedRoadmap</span>
+              Contract: <span class="text-[hsl(var(--foreground))]">PrioritizedRoadmap</span>
             </div>
-          </article>
+          </div>
 
-          <!-- Step 3 -->
-          <article class="p-6 rounded-lg border border-default bg-card">
-            <div class="font-mono text-xs text-muted mb-4">STAGE 03</div>
-            <h3 class="font-semibold text-base mb-2">Tutor Agent</h3>
+          <div class="p-6 rounded-lg border border-default bg-card">
+            <div class="font-mono text-xs text-muted mb-3">STAGE 3</div>
+            <h3 class="font-semibold text-base mb-2">The Kata Chamber</h3>
             <p class="text-sm text-muted leading-relaxed mb-4">
-              Delivers concise theory and assigns hands-on coding challenges for the active roadmap milestone.
+              Delivers concise theory and assigns targeted challenges tackling specific language and systems subtleties.
             </p>
             <div class="text-xs font-mono text-muted pt-3 border-t border-default">
-              Output: <span class="text-[hsl(var(--foreground))]">KataChallenge</span>
+              Contract: <span class="text-[hsl(var(--foreground))]">KataChallenge</span>
             </div>
-          </article>
+          </div>
 
-          <!-- Step 4 -->
-          <article class="p-6 rounded-lg border border-default bg-card">
-            <div class="font-mono text-xs text-muted mb-4">STAGE 04</div>
-            <h3 class="font-semibold text-base mb-2">Examiner Agent</h3>
+          <div class="p-6 rounded-lg border border-default bg-card">
+            <div class="font-mono text-xs text-muted mb-3">STAGE 4</div>
+            <h3 class="font-semibold text-base mb-2">Socratic Inquisition</h3>
             <p class="text-sm text-muted leading-relaxed mb-4">
-              Runs your solution against sandbox assertions. Issues PASS to advance or RETRY with Socratic clues.
+              Executes code against sandbox test assertions. Emits PASS to advance or RETRY with targeted counter-questions.
             </p>
             <div class="text-xs font-mono text-muted pt-3 border-t border-default">
-              Output: <span class="text-[hsl(var(--foreground))]">AssessmentScore</span>
+              Contract: <span class="text-[hsl(var(--foreground))]">AssessmentScore</span>
             </div>
-          </article>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Engineering Craft / Architecture -->
+    <!-- Architecture & Craft -->
     <section class="py-24 border-t border-default">
       <div class="max-w-5xl mx-auto px-6">
         <div class="max-w-2xl mb-16">
-          <h2 class="text-3xl font-bold tracking-tight mb-4">Engineered for speed and correctness</h2>
+          <h2 class="text-3xl font-bold tracking-tight mb-4">Pure Systems Craftsmanship</h2>
           <p class="text-muted leading-relaxed">
-            Written in idiomatic Rust with zero runtime dependencies. Built to live in your terminal.
+            Written from scratch in Rust. Zero Python overhead, zero virtualenv baggage, zero token waste in offline mode.
           </p>
         </div>
 
         <div class="grid md:grid-cols-3 gap-6">
           <div class="p-6 rounded-lg border border-default bg-card">
-            <div class="font-mono text-xs text-muted mb-3">&lt; 5ms Cold Start</div>
+            <div class="font-mono text-xs text-muted mb-3">&lt; 5ms Startup</div>
             <h3 class="font-semibold text-base mb-2">Single Static Binary</h3>
             <p class="text-sm text-muted leading-relaxed">
-              No Python runtime, no virtualenv conflicts, no PyTorch overhead. A single binary that launches instantaneously with ~15MB RAM.
+              No Python runtime, no PyTorch dependencies. A compiled Rust binary that launches instantaneously in your terminal with ~15MB RAM.
             </p>
           </div>
 
           <div class="p-6 rounded-lg border border-default bg-card">
-            <div class="font-mono text-xs text-muted mb-3">100% Hermetic</div>
-            <h3 class="font-semibold text-base mb-2">Offline-First Stub Engine</h3>
+            <div class="font-mono text-xs text-muted mb-3">100% Offline</div>
+            <h3 class="font-semibold text-base mb-2">Deterministic Stub Engine</h3>
             <p class="text-sm text-muted leading-relaxed">
-              Every agent, state machine transition, and evaluation harness runs locally with our deterministic stub client. Zero API costs for testing.
+              Run offline katas on an airplane without spending API tokens. The built-in stub engine allows complete hermetic training and testing.
             </p>
           </div>
 
           <div class="p-6 rounded-lg border border-default bg-card">
-            <div class="font-mono text-xs text-muted mb-3">Algebraic FSM</div>
-            <h3 class="font-semibold text-base mb-2">Exhaustive State Transitions</h3>
+            <div class="font-mono text-xs text-muted mb-3">Algebraic Safety</div>
+            <h3 class="font-semibold text-base mb-2">Exhaustive Rust FSM</h3>
             <p class="text-sm text-muted leading-relaxed">
-              States and transitions are encoded as strict Rust enums. Invalid states cannot be represented or compiled, eliminating desync bugs.
+              States and transitions are encoded as explicit algebraic enums. Invalid states cannot compile, guaranteeing reliable sessions.
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Quickstart / CTA -->
+    <!-- Quickstart & Terminal Install -->
     <section id="quickstart" class="py-24 border-t border-default bg-[hsl(var(--secondary))]/30">
       <div class="max-w-5xl mx-auto px-6">
         <div class="max-w-2xl mx-auto text-center space-y-6">
-          <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">Ready to master your craft?</h2>
+          <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">Enter the Cockpit</h2>
           <p class="text-muted text-base leading-relaxed">
-            Install Nereus in seconds via Cargo or clone the repository to run offline demo katas.
+            Install Nereus in seconds or run the offline demo katas without an API key.
           </p>
 
-          <div class="p-4 rounded-lg border border-default bg-[hsl(var(--background))] text-left font-mono text-xs space-y-2 max-w-lg mx-auto">
+          <div class="p-5 rounded-lg border border-default bg-[hsl(var(--background))] text-left font-mono text-xs space-y-3 max-w-lg mx-auto">
             <div class="text-muted flex items-center justify-between">
-              <span>// Install latest release</span>
-              <span>v0.2.0</span>
+              <span>// 1. Install via Cargo</span>
+              <span class="text-emerald-500">v0.2.0</span>
             </div>
             <div class="text-[hsl(var(--foreground))] select-all">$ cargo install nereus</div>
+
             <div class="text-muted pt-2 border-t border-default flex items-center justify-between">
-              <span>// Launch offline sandbox demo</span>
+              <span>// 2. Launch offline sparring session</span>
               <span>Zero token cost</span>
             </div>
             <div class="text-[hsl(var(--foreground))] select-all">$ nereus --offline</div>
+
+            <div class="text-muted pt-2 border-t border-default flex items-center justify-between">
+              <span>// 3. Or connect to OpenRouter / Claude</span>
+              <span>Live Socratic mode</span>
+            </div>
+            <div class="text-[hsl(var(--foreground))] select-all">$ NEREUS_API_KEY="sk-..." nereus</div>
           </div>
 
           <div class="pt-4 flex items-center justify-center gap-4">
@@ -450,70 +421,47 @@
     </div>
   </footer>
 
-  <!-- Interactive Terminal Scripts -->
+  <!-- Interactive Sparring Ring Scripts -->
   <script>
     const KATAS = {
+      deadlock: {
+        file: "kata_01_asymmetric_locking.rs",
+        code: `async fn transfer_funds(acc_a: &Arc<Mutex<Account>>, acc_b: &Arc<Mutex<Account>>, amt: u64) {\n    let mut a = acc_a.lock().await;\n    let mut b = acc_b.lock().await;\n    a.balance -= amt;\n    b.balance += amt;\n}`,
+        chatbot: `"Here is the fixed code! You have a deadlock risk. Just replace line 2-3 with a sorted locking mechanism:\n\nlet (mut a, mut b) = if acc_a.id < acc_b.id { ... };\n\nHope this helps! Let me know if you need anything else! 🎉"`,
+        nereus: `"Notice the locking order in transfer_funds. If thread 1 calls transfer(A, B) while thread 2 concurrently calls transfer(B, A), what state do both threads enter? How does establishing a deterministic global lock hierarchy prevent cyclical acquisition waits?"`
+      },
       lifetimes: {
-        file: "src/concurrency/broadcast.rs",
-        code: `async fn broadcast_update(\n    tx: mpsc::Sender<Event>,\n    event: Event,\n) {\n    tokio::spawn(async move {\n        let _ = tx.send(event).await;\n    });\n    // Compiler Error:\n    let _ = tx.send(Event::Heartbeat).await;\n}`,
-        status: "FAILED [E0382]",
-        compiler: "error[E0382]: use of moved value: `tx`\n  --> src/concurrency/broadcast.rs:8:13\n   | value moved into closure here in previous iteration",
-        score: "RETRY · Score: 60/100",
-        prompt: "\"Notice that `tx` was captured by the spawned async move block by value. What happens when line 8 attempts to use the same handle? How does cloning a sender before moving satisfy the borrow checker?\""
+        file: "kata_02_async_spawn_lifetime.rs",
+        code: `fn process_stream<'a>(data: &'a [u8]) -> tokio::task::JoinHandle<()> {\n    tokio::spawn(async move {\n        let checksum = compute_crc(data);\n        println!("Checksum: {checksum}");\n    })\n}`,
+        chatbot: `"Your code fails to compile because tokio::spawn requires 'static. Here is the full code fixed for you:\n\nfn process_stream(data: Vec<u8>) -> ... {\n    tokio::spawn(async move { ... });\n}\n\nHave a great day coding!"`,
+        nereus: `"The compiler emits error[E0310]: parameter 'data' must have an explicit 'static lifetime. Why does a background task spawned on a multithreaded runtime forbid references to the local caller stack frame? When should you use Arc<[u8]> instead of cloning entire vectors?"`
       },
-      tokio: {
-        file: "src/runtime/worker.rs",
-        code: `pub fn start_worker<T: Send>(mut rx: mpsc::Receiver<T>) {\n    // Compiler Error: missing 'static lifetime\n    tokio::spawn(async move {\n        while let Some(msg) = rx.recv().await {\n            process(&msg);\n        }\n    });\n}`,
-        status: "FAILED [E0310]",
-        compiler: "error[E0310]: the parameter type `T` may not live long enough\n  --> src/runtime/worker.rs:3:5\n   | the parameter type `T` must have an explicit `'static` lifetime",
-        score: "RETRY · Score: 68/100",
-        prompt: "\"Tokio's spawn function requires the returned future and its captures to be 'static + Send. Why does the compiler require 'static for a background task? How can you add a lifetime bound to T?\""
-      },
-      pinning: {
-        file: "src/stream/custom_poll.rs",
-        code: `impl<S: Stream> Stream for TimedStream<S> {\n    type Item = S::Item;\n    fn poll_next(self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Option<Self::Item>> {\n        // Sandbox assertion verified: pin projection safe\n        self.project().stream.poll_next(cx)\n    }\n}`,
-        status: "PASSED [14/14 tests]",
-        compiler: "test stream::tests::test_poll_next ... ok\ntest stream::tests::test_pin_projection ... ok\ntest result: ok. 14 passed; 0 failed",
-        score: "PASS · Score: 96/100",
-        prompt: "\"Topic Mastered. Pin projection correctly maintained structural invariants without invoking undefined behavior. Advancing roadmap to Stage 4: Async Cancellation Primitives.\""
+      alloc: {
+        file: "kata_03_zero_cost_parser.rs",
+        code: `fn parse_headers(raw: &str) -> Vec<String> {\n    raw.lines()\n       .filter(|l| l.contains(':'))\n       .map(|l| l.to_string())\n       .collect()\n}`,
+        chatbot: `"To optimize allocations, here is the modified code using &str instead of String:\n\nfn parse_headers<'a>(raw: &'a str) -> Vec<&'a str> {\n    raw.lines().filter(...).collect()\n}\n\nAll done!"`,
+        nereus: `"Your parser allocates a new heap String for every valid header line. If this function processes 50,000 requests/sec, what is the impact on your allocator cache lines? How can Rust's borrowing semantics allow this signature to return borrowed slices without allocating memory?"`
       }
     };
 
     function updateKata(key) {
-      const kata = KATAS[key];
-      if (!kata) return;
+      const data = KATAS[key];
+      if (!data) return;
 
-      document.getElementById('code-snippet').textContent = kata.code;
-      document.getElementById('compiler-status').textContent = kata.status;
-      document.getElementById('compiler-output').textContent = kata.compiler;
-      document.getElementById('score-badge').textContent = kata.score;
-      document.getElementById('socratic-prompt').textContent = kata.prompt;
-      document.getElementById('tab-lang').textContent = kata.file;
-
-      const isPass = kata.status.includes('PASSED');
-      const compOut = document.getElementById('compiler-output');
-      const scoreBadge = document.getElementById('score-badge');
-      const compStatus = document.getElementById('compiler-status');
-
-      if (isPass) {
-        compOut.className = "p-3 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs leading-relaxed font-mono";
-        scoreBadge.className = "text-xs px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20";
-        compStatus.className = "text-emerald-500 font-semibold";
-      } else {
-        compOut.className = "p-3 rounded bg-red-500/10 border border-red-500/20 text-red-600 dark:text-red-400 text-xs leading-relaxed font-mono";
-        scoreBadge.className = "text-xs px-2.5 py-1 rounded-full bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 border border-yellow-500/20";
-        compStatus.className = "text-red-500 font-semibold";
-      }
+      document.getElementById('kata-title').textContent = data.file;
+      document.getElementById('kata-code').textContent = data.code;
+      document.getElementById('chatbot-response').textContent = data.chatbot;
+      document.getElementById('nereus-response').textContent = data.nereus;
     }
 
-    // Tab buttons click handler
-    document.querySelectorAll('.tab-btn').forEach(btn => {
+    // Tab buttons
+    document.querySelectorAll('.kata-btn').forEach(btn => {
       btn.addEventListener('click', () => {
-        document.querySelectorAll('.tab-btn').forEach(b => {
-          b.className = "tab-btn px-3 py-1.5 rounded-md text-muted hover:text-[hsl(var(--foreground))] transition-all";
+        document.querySelectorAll('.kata-btn').forEach(b => {
+          b.className = "kata-btn px-3 py-1.5 rounded-md text-muted hover:text-[hsl(var(--foreground))] transition-all";
         });
-        btn.className = "tab-btn px-3 py-1.5 rounded-md font-medium bg-[hsl(var(--background))] text-[hsl(var(--foreground))] shadow-sm transition-all";
-        updateKata(btn.dataset.tab);
+        btn.className = "kata-btn px-3 py-1.5 rounded-md font-medium bg-[hsl(var(--background))] text-[hsl(var(--foreground))] shadow-sm transition-all";
+        updateKata(btn.dataset.kata);
       });
     });
 
@@ -535,7 +483,7 @@
     });
 
     // Initialize with first kata
-    updateKata('lifetimes');
+    updateKata('deadlock');
   </script>
 </body>
 </html>
