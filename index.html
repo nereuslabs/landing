@@ -3,403 +3,539 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nereus — The Terminal AI Mentor That Doesn't Flatter You</title>
-  <meta name="description" content="Open-source terminal-first AI programming mentor written in Rust. Adaptive diagnostics, Socratic katas, and sandboxed test execution without leaking answers." />
+  <title>Nereus — Terminal-First Socratic AI Programming Mentor</title>
+  <meta name="description" content="Nereus is an open-source terminal AI programming mentor built in Rust. It compiles your code in an isolated sandbox and guides you with Socratic counter-questions instead of leaking answers.">
 
-  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <!-- Tailwind CSS & Fonts -->
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
-</head>
-<body>
 
-  <!-- =================================================================
-     NAVIGATION
-     ========================================================================= -->
-  <header class="site-nav">
-    <div class="container nav-content">
-      <a href="#" class="nav-brand">
-        <img src="assets/logo.svg" alt="Nereus Logo" class="brand-logo">
-        Nereus
-        <span class="brand-version">v2.0 Rust</span>
+  <style>
+    /* =================================================================
+       MINIMAL DESIGN SYSTEM v2.0
+       HSL-based Semantic Color Tokens with Auto Dark Mode
+       ================================================================= */
+    :root {
+      --background: 0 0% 100%;
+      --foreground: 240 10% 3.9%;
+      --card: 0 0% 100%;
+      --card-foreground: 240 10% 3.9%;
+      --primary: 240 5.9% 10%;
+      --primary-foreground: 0 0% 98%;
+      --secondary: 240 4.8% 95.9%;
+      --secondary-foreground: 240 5.9% 10%;
+      --muted: 240 4.8% 95.9%;
+      --muted-foreground: 240 3.8% 46.1%;
+      --accent: 240 4.8% 95.9%;
+      --accent-foreground: 240 5.9% 10%;
+      --border: 240 5.9% 90%;
+      --ring: 240 5.9% 10%;
+      --radius: 0.5rem;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --background: 240 10% 3.9%;
+        --foreground: 0 0% 98%;
+        --card: 240 10% 3.9%;
+        --card-foreground: 0 0% 98%;
+        --primary: 0 0% 98%;
+        --primary-foreground: 240 5.9% 10%;
+        --secondary: 240 3.7% 15.9%;
+        --secondary-foreground: 0 0% 98%;
+        --muted: 240 3.7% 15.9%;
+        --muted-foreground: 240 5% 64.9%;
+        --accent: 240 3.7% 15.9%;
+        --accent-foreground: 0 0% 98%;
+        --border: 240 3.7% 15.9%;
+        --ring: 240 4.9% 83.9%;
+      }
+    }
+
+    * {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      border-color: hsl(var(--border));
+    }
+
+    .font-mono {
+      font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+    }
+
+    body {
+      background-color: hsl(var(--background));
+      color: hsl(var(--foreground));
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .text-muted { color: hsl(var(--muted-foreground)); }
+    .bg-muted { background-color: hsl(var(--muted)); }
+    .bg-card { background-color: hsl(var(--card)); }
+    .border-default { border-color: hsl(var(--border)); }
+    .bg-primary { background-color: hsl(var(--primary)); }
+    .text-primary-foreground { color: hsl(var(--primary-foreground)); }
+
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid hsl(var(--ring));
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-[hsl(var(--primary))] selection:text-[hsl(var(--primary-foreground))]">
+
+  <!-- Sticky Header with Backdrop Blur -->
+  <header class="sticky top-0 z-50 border-b border-default bg-[hsl(var(--background))]/90 backdrop-blur supports-[backdrop-filter]:bg-[hsl(var(--background))]/70">
+    <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3 font-semibold tracking-tight text-lg">
+        <img src="assets/logo.svg" alt="Nereus Logo" class="w-7 h-7 rounded">
+        <span>Nereus</span>
+        <span class="text-xs px-2 py-0.5 rounded bg-muted text-muted font-mono font-normal">v2.0 rust</span>
       </a>
-      <nav class="nav-links">
-        <a href="#features">Features</a>
-        <a href="#comparison">Socratic vs. AI</a>
-        <a href="#agents">4-Agent Lifecycle</a>
-        <a href="#architecture">Architecture</a>
-        <a href="https://github.com/nereuslabs/nereus" target="_blank" rel="noopener">GitHub</a>
+
+      <nav class="hidden md:flex items-center gap-8 text-sm text-muted">
+        <a href="#socratic" class="hover:text-[hsl(var(--foreground))] transition-colors">Methodology</a>
+        <a href="#agents" class="hover:text-[hsl(var(--foreground))] transition-colors">Automaton</a>
+        <a href="#terminal" class="hover:text-[hsl(var(--foreground))] transition-colors">Terminal Cockpit</a>
+        <a href="#quickstart" class="hover:text-[hsl(var(--foreground))] transition-colors">Quickstart</a>
       </nav>
-      <div class="nav-actions">
-        <a href="https://github.com/nereuslabs/nereus" target="_blank" rel="noopener" class="btn btn-secondary">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-          Star on GitHub
+
+      <div class="flex items-center gap-3">
+        <a href="https://github.com/nereuslabs/nereus" target="_blank" rel="noopener" class="inline-flex items-center gap-2 h-9 px-4 border border-default text-sm font-medium rounded-md hover:bg-muted transition-colors">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+            <path d="M9 18c-4.51 2-5-2-7-2"/>
+          </svg>
+          <span>Star on GitHub</span>
         </a>
-        <a href="#terminal-demo" class="btn btn-glow">Launch TUI</a>
       </div>
     </div>
   </header>
 
-  <!-- =================================================================
-     HERO SECTION
-     ========================================================================= -->
-  <section class="hero-section">
-    <div class="container">
-      <div class="hero-content">
-        <div class="hero-badge">
-          <span class="beacon-dot"></span>
-          Nereus 2.0 • Socratic Terminal AI Mentor in Rust
-        </div>
-        <h1 class="hero-title">
-          The terminal AI mentor that doesn't flatter you.
-        </h1>
-        <p class="hero-sub">
-          Replace passive chatbots with an execution-driven learning automaton. Featuring adaptive diagnostics, Socratic katas, and sandboxed test verification with sub-millisecond cold starts.
-        </p>
+  <!-- Main Content -->
+  <main class="flex-grow">
 
-        <div class="hero-cta-group">
-          <div class="terminal-command-box">
-            <span>$</span>
-            <code id="command-text">cargo install nereus</code>
-            <button class="copy-btn" id="copy-command-btn" title="Copy to clipboard">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
-            </button>
-          </div>
-          <a href="https://github.com/nereuslabs/nereus" target="_blank" rel="noopener" class="btn btn-primary">
-            View Source Code
-          </a>
-        </div>
-      </div>
-
-      <!-- INTERACTIVE TERMINAL WIDGET (TUI MOCKUP) -->
-      <div class="terminal-window" id="terminal-demo">
-        <div class="terminal-header">
-          <div class="terminal-dots">
-            <div class="dot dot-red"></div>
-            <div class="dot dot-yellow"></div>
-            <div class="dot dot-green"></div>
-          </div>
-          <div class="terminal-title">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" x2="20" y1="19" y2="19"/></svg>
-            nereus-tui cockpit — session_id: 0x82f9
-          </div>
-          <div class="terminal-version" style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-cyan);">[FSM: ACTIVE]</div>
-        </div>
-
-        <div class="terminal-tabs">
-          <button class="tui-tab active" data-tab="roadmap">1. Roadmap & Topics</button>
-          <button class="tui-tab" data-tab="katas">2. Tokio Katas</button>
-          <button class="tui-tab" data-tab="examiner">3. Socratic Examiner</button>
-          <button class="tui-tab" data-tab="state">4. Algebraic FSM</button>
-        </div>
-
-        <div class="terminal-body">
-          <!-- PANE 1: ROADMAP -->
-          <div class="tui-pane active" id="pane-roadmap">
-            <div class="tui-row">
-              <div class="tui-col">
-                <div class="tui-col-header">
-                  <span>Diagnostic Weakness Report</span>
-                  <span class="tui-badge badge-coral">Score: 68/100</span>
-                </div>
-                <div class="tui-list-item selected" data-topic="async-lifetimes">
-                  <span>async move block lifetime inference</span>
-                  <span class="tui-badge badge-coral">Weak</span>
-                </div>
-                <div class="tui-list-item" data-topic="fsm-states">
-                  <span>algebraic state machine invariants</span>
-                  <span class="tui-badge badge-yellow">Medium</span>
-                </div>
-                <div class="tui-list-item" data-topic="socratic-hints">
-                  <span>Pin projection & unsafe pointers</span>
-                  <span class="tui-badge badge-green">Mastered</span>
-                </div>
-              </div>
-              <div class="tui-col">
-                <div class="tui-col-header">
-                  <span>Coach Agent Strategy</span>
-                  <span>Goal-Oriented</span>
-                </div>
-                <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 12px; line-height: 1.5;">
-                  Roadmap dynamically reordered by weak areas. Diagnostic quiz results dictate the exact sequence of katas to prevent superficial learning.
-                </p>
-                <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-cyan);">
-                  → Next Milestone: Tokio Select Macro Pinning & Unpin Traits
-                </div>
-              </div>
-            </div>
+    <!-- Hero Section -->
+    <section class="py-24 md:py-32">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="max-w-3xl">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-default bg-muted text-xs text-muted font-mono mb-8">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+            <span>Open Source • Built in Rust • MIT Licensed</span>
           </div>
 
-          <!-- PANE 2: KATAS -->
-          <div class="tui-pane" id="pane-katas">
-            <div class="tui-row">
-              <div class="tui-col">
-                <div class="tui-col-header"><span>Kata #4: Async Broadcast Channel</span></div>
-                <pre style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-secondary); overflow-x: auto; line-height: 1.4;">
-async fn broadcast_state(
-    mut rx: tokio::sync::broadcast::Receiver&lt;State&gt;
-) -&gt; Result&lt;(), broadcast::error::RecvError&gt; {
-    while let Ok(val) = rx.recv().await {
-        // TODO: fix lifetime error in spawned future
-        tokio::spawn(async move {
-            process_update(val).await;
-        });
-    }
-    Ok()
-}</pre>
-              </div>
-            </div>
-          </div>
+          <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-8 leading-[1.12]">
+            The terminal AI mentor that doesn't write the code for you.
+          </h1>
 
-          <!-- PANE 3: EXAMINER -->
-          <div class="tui-pane" id="pane-examiner">
-            <div class="tui-row">
-              <div class="tui-col">
-                <div class="tui-col-header">
-                  <span>Examiner Feedback Feed</span>
-                  <span class="tui-badge badge-green">Sandbox: Verified</span>
-                </div>
-                <p id="socratic-feedback-text" style="font-size: 0.9rem; color: var(--text-primary); line-height: 1.6; font-family: var(--font-mono);">
-                  Nereus Examiner: "You stored a reference with local lifetime in an async spawn block. What happens when the enclosing scope exits before the spawned future completes? Hint: consider 'static or moving ownership."
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- PANE 4: STATE FSM -->
-          <div class="tui-pane" id="pane-state">
-            <div class="tui-row">
-              <div class="tui-col">
-                <div class="tui-col-header"><span>Finite State Machine State Graph</span></div>
-                <div style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-secondary); line-height: 1.6;">
-                  [DiagnosticAgent] <span style="color: var(--accent-cyan);">---(WeaknessReport)---></span> [CoachAgent]<br>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
-                  [ExaminerAgent] <span style="color: var(--accent-coral);"><---(Socratic Hint)---</span> [TutorAgent]
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="terminal-footer-bar">
-            <div class="keybind-hint">
-              <kbd>Tab</kbd> Switch View • <kbd>j</kbd><kbd>k</kbd> Navigate • <kbd>Enter</kbd> Select • <kbd>Esc</kbd> Exit
-            </div>
-            <div style="color: var(--accent-cyan); font-family: var(--font-mono); font-size: 0.78rem;">
-              Offline Hermetic Mode Active
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- =================================================================
-     COMPARISON SECTION (Socratic vs Standard AI)
-     ========================================================================= -->
-  <section id="comparison">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">The Socratic method vs. standard AI</h2>
-        <p class="section-desc">Why Nereus challenges your thinking instead of dumping unearned solutions.</p>
-      </div>
-
-      <div class="comparison-grid">
-        <!-- Standard Chatbot -->
-        <div class="comparison-card other-card">
-          <h3>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
-            Standard AI Chatbots
-          </h3>
-          <ul class="comparison-list">
-            <li class="comparison-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-              <span>Instantly leaks the full code solution, inducing passive dependency.</span>
-            </li>
-            <li class="comparison-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-              <span>Overly flattering tone ("Great job! You're a coding genius!").</span>
-            </li>
-            <li class="comparison-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-              <span>No concept of adaptive diagnostics or persistent weakness tracking.</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Nereus -->
-        <div class="comparison-card nereus-card">
-          <h3>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            Nereus (Socratic Mastery)
-          </h3>
-          <ul class="comparison-list">
-            <li class="comparison-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Prompts deep comprehension with targeted Socratic counter-questions.</span>
-            </li>
-            <li class="comparison-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Rigorous execution-driven evaluation in isolated test sandboxes.</span>
-            </li>
-            <li class="comparison-item">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Algebraic Finite State Machine with persistent user session states.</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- =================================================================
-     4-AGENT LIFECYCLE
-     ========================================================================= -->
-  <section id="agents">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">A four-stage learning automaton</h2>
-        <p class="section-desc">A disciplined pipeline moving from vulnerability detection to verified mastery.</p>
-      </div>
-
-      <div class="lifecycle-grid">
-        <div class="lifecycle-card">
-          <span class="lifecycle-step">Phase 1 · Diagnostic</span>
-          <h3>Adaptive quiz</h3>
-          <p>Probes current fundamentals with targeted micro-questions to synthesize an objective <code style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--accent-cyan);">WeaknessReport</code>.</p>
-        </div>
-
-        <div class="lifecycle-card">
-          <span class="lifecycle-step">Phase 2 · Coach</span>
-          <h3>Goal roadmap</h3>
-          <p>Orders your learning path by weak areas, building a dynamic milestone tree tailored to your target proficiency.</p>
-        </div>
-
-        <div class="lifecycle-card">
-          <span class="lifecycle-step">Phase 3 · Tutor</span>
-          <h3>Katas and theory</h3>
-          <p>Delivers bite-sized conceptual theory and practical coding challenges targeting language subtleties and patterns.</p>
-        </div>
-
-        <div class="lifecycle-card">
-          <span class="lifecycle-step">Phase 4 · Examiner</span>
-          <h3>Sandboxed verdict</h3>
-          <p>Compiles and runs code inside an isolated sandbox, emitting Socratic hints on failure and advancing on verified test passes.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- =================================================================
-     ARCHITECTURE & ENGINEERING CRAFT
-     ========================================================================= -->
-  <section id="architecture">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">Built for performance and reliability</h2>
-        <p class="section-desc">Engineered in Rust with uncompromising attention to speed, safety, and offline resilience.</p>
-      </div>
-
-      <div class="arch-grid">
-        <div class="arch-card">
-          <div class="arch-icon">⚡</div>
-          <h3>Sub-millisecond startup</h3>
-          <p>Single static Rust binary with zero heavy runtime overhead, ensuring instant terminal cold starts.</p>
-        </div>
-
-        <div class="arch-card">
-          <div class="arch-icon">🛡️</div>
-          <h3>Offline-first hermetic CI</h3>
-          <p>Complete hermetic stub support guaranteeing test and CI safety without cloud API dependencies.</p>
-        </div>
-
-        <div class="arch-card">
-          <div class="arch-icon">⚙️</div>
-          <h3>Algebraic FSM state engine</h3>
-          <p>Robust state transitions using exhaustive Rust enums, Serde schemas, and SQLite session persistence.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- =================================================================
-     TERMINAL COCKPIT (TUI) FEATURE CALLOUT
-     ========================================================================= -->
-  <section>
-    <div class="container">
-      <div class="tui-feature-box">
-        <div class="tui-feature-content">
-          <h3>Navigate entirely from your keyboard</h3>
-          <p>
-            Stay in your flow state. Nereus features a Ratatui TUI cockpit with vim-inspired keybindings, live diagnostic trees, and instant Socratic feedback feeds.
+          <p class="text-lg md:text-xl text-muted leading-relaxed mb-10 max-w-2xl">
+            Nereus runs an execution-driven learning automaton. It diagnoses skill gaps, compiles your code inside an isolated sandbox, and guides you to genuine mastery through Socratic counter-questions.
           </p>
-          <div class="keybind-table">
-            <div class="keybind-row">
-              <span>Switch roadmap and katas</span>
-              <kbd>Tab</kbd>
+
+          <div class="flex flex-wrap items-center gap-4">
+            <div class="inline-flex items-center gap-3 h-11 px-4 bg-muted border border-default rounded-md font-mono text-sm">
+              <span class="text-muted select-none">$</span>
+              <span id="cargo-cmd">cargo install nereus</span>
+              <button id="copy-btn" class="text-muted hover:text-[hsl(var(--foreground))] transition-colors p-1" title="Copy to clipboard" aria-label="Copy install command">
+                <svg id="copy-icon" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                  <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                </svg>
+                <svg id="check-icon" class="w-4 h-4 hidden text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+              </button>
             </div>
-            <div class="keybind-row">
-              <span>Navigate items</span>
-              <div><kbd>j</kbd> <kbd>k</kbd></div>
-            </div>
-            <div class="keybind-row">
-              <span>Execute and submit</span>
-              <kbd>Enter</kbd>
-            </div>
-          </div>
-        </div>
-        <div class="tui-mock-mini">
-          <div style="color: var(--accent-cyan); margin-bottom: 12px; font-weight: bold;">[nereus-tui v2.0]</div>
-          <div style="color: var(--text-secondary); line-height: 1.5;">
-            &gt; Initializing local sqlite session... OK<br>
-            &gt; Loading WeaknessReport for user 0x82...<br>
-            &gt; Spawning Diagnostic FSM node...<br>
-            <span style="color: var(--text-primary);">[Coach]: Roadmap locked. 3 katas queued.</span>
+
+            <a href="https://github.com/nereuslabs/nereus" target="_blank" rel="noopener" class="inline-flex items-center justify-center h-11 px-6 bg-primary text-primary-foreground text-sm font-medium rounded-md hover:opacity-90 transition-opacity">
+              Explore Repository
+            </a>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- =================================================================
-     OPEN SOURCE & ROADMAP
-     ========================================================================= -->
-  <section class="opensource-section">
-    <div class="container">
-      <h2 class="section-title">Free and open source under MIT</h2>
-      <p class="section-desc" style="max-width: 600px; margin: 0 auto 32px;">
-        Nereus is built in public by developers, for developers. Star the repository, contribute katas, or inspect the state graph.
-      </p>
-      <a href="https://github.com/nereuslabs/nereus" target="_blank" rel="noopener" class="btn btn-primary">
-        Explore nereuslabs/nereus on GitHub
-      </a>
-    </div>
-  </section>
+    <!-- Interactive Terminal Cockpit Preview -->
+    <section id="terminal" class="py-16 border-t border-default bg-[hsl(var(--secondary))]/30">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+          <div>
+            <h2 class="text-2xl font-semibold tracking-tight mb-2">Live Socratic Inspection</h2>
+            <p class="text-sm text-muted">Test how the examiner responds to failing compiler passes in real time.</p>
+          </div>
 
-  <!-- =================================================================
-     FOOTER
-     ========================================================================= -->
-  <footer class="site-footer">
-    <div class="container footer-content">
-      <div class="footer-brand">
-        <div style="display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--text-primary);">
-          <img src="assets/logo.svg" alt="Nereus Logo" style="width: 24px; height: 24px; border-radius: 4px;">
-          Nereus Labs
+          <!-- Terminal Tabs -->
+          <div class="flex items-center gap-2 p-1 bg-muted rounded-lg border border-default text-xs font-mono">
+            <button class="tab-btn px-3 py-1.5 rounded-md font-medium bg-[hsl(var(--background))] text-[hsl(var(--foreground))] shadow-sm transition-all" data-tab="lifetimes">Kata 1: Ownership</button>
+            <button class="tab-btn px-3 py-1.5 rounded-md text-muted hover:text-[hsl(var(--foreground))] transition-all" data-tab="tokio">Kata 2: Tokio MPSC</button>
+            <button class="tab-btn px-3 py-1.5 rounded-md text-muted hover:text-[hsl(var(--foreground))] transition-all" data-tab="pinning">Kata 3: Pin Projection</button>
+          </div>
         </div>
-        <p>© 2026 Nereus Labs. Licensed under the MIT License.</p>
+
+        <!-- Terminal Window Frame -->
+        <div class="rounded-lg border border-default bg-[hsl(var(--background))] overflow-hidden shadow-sm">
+          <!-- Terminal Header -->
+          <div class="px-4 py-3 border-b border-default bg-muted/40 flex items-center justify-between text-xs font-mono text-muted">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-red-500/80"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
+              <span class="ml-2 font-medium text-[hsl(var(--foreground))]">nereus-tui — kata_evaluator.rs</span>
+            </div>
+            <span class="text-xs px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">Sandbox: Isolated</span>
+          </div>
+
+          <!-- Terminal Content Grid -->
+          <div class="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-[hsl(var(--border))] font-mono text-xs">
+            <!-- Left Pane: Code & Compiler Output -->
+            <div class="p-6 overflow-x-auto space-y-4">
+              <div class="text-muted flex items-center justify-between">
+                <span>// Student Submission (Rust 2021)</span>
+                <span id="tab-lang" class="text-muted">src/worker.rs</span>
+              </div>
+              <pre id="code-snippet" class="text-sm leading-relaxed text-[hsl(var(--foreground))]">// Loading code...</pre>
+
+              <div class="pt-4 border-t border-default space-y-2">
+                <div class="flex items-center justify-between text-muted text-xs">
+                  <span>$ cargo test --quiet</span>
+                  <span class="text-red-500 font-semibold" id="compiler-status">FAILED [E0382]</span>
+                </div>
+                <div id="compiler-output" class="p-3 rounded bg-red-500/10 border border-red-500/20 text-red-600 dark:text-red-400 text-xs leading-relaxed font-mono">
+                  error[E0382]: use of moved value: `tx`
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Pane: Socratic Examiner Feedback -->
+            <div class="p-6 flex flex-col justify-between space-y-6 bg-muted/10">
+              <div class="space-y-4">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-semibold text-[hsl(var(--foreground))] uppercase tracking-wider">Examiner Verdict</span>
+                  <span id="score-badge" class="text-xs px-2.5 py-1 rounded-full bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 border border-yellow-500/20">RETRY · Score: 60/100</span>
+                </div>
+
+                <div class="p-4 rounded-lg border border-default bg-card space-y-3">
+                  <div class="flex items-center gap-2 text-xs font-semibold text-[hsl(var(--foreground))]">
+                    <svg class="w-4 h-4 text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                    </svg>
+                    <span>Socratic Guidance (No Leaked Code)</span>
+                  </div>
+                  <p id="socratic-prompt" class="text-xs text-muted leading-relaxed font-mono">
+                    "Notice that `tx` was captured by the first spawned task by value. What happens when the second task attempts to use the same handle? How does cloning a sender before moving satisfy the borrow checker without changing receiver capacity?"
+                  </p>
+                </div>
+              </div>
+
+              <div class="pt-4 border-t border-default flex items-center justify-between text-xs text-muted">
+                <span>Pass Threshold: ≥75.0</span>
+                <span class="font-mono">FSM State: <strong class="text-[hsl(var(--foreground))]">Examining</strong></span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="footer-links">
-        <a href="https://github.com/nereuslabs/nereus" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://github.com/nereuslabs/nereus/blob/main/README.md" target="_blank" rel="noopener">Documentation</a>
-        <a href="https://github.com/nereuslabs/nereus/issues" target="_blank" rel="noopener">Issues</a>
+    </section>
+
+    <!-- Methodology Comparison -->
+    <section id="socratic" class="py-24 border-t border-default">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="max-w-2xl mb-16">
+          <h2 class="text-3xl font-bold tracking-tight mb-4">Why Socratic mentorship matters</h2>
+          <p class="text-muted leading-relaxed">
+            Most AI tools act like eager assistants that dump answers into your editor. You get instant code, but retain zero mental model. Nereus forces you to build the intuition.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Standard AI Card -->
+          <article class="p-8 rounded-lg border border-default bg-card">
+            <div class="flex items-center gap-3 mb-6">
+              <span class="w-2 h-2 rounded-full bg-red-500"></span>
+              <h3 class="font-semibold text-lg">Standard AI Chatbots</h3>
+            </div>
+            <ul class="space-y-4 text-sm text-muted">
+              <li class="flex items-start gap-3">
+                <span class="text-red-500 font-bold select-none">✕</span>
+                <span>Instantly leaks the full code solution, creating an illusion of competence without neural retention.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-red-500 font-bold select-none">✕</span>
+                <span>Overly flattering tone that validates incorrect assumptions instead of demanding proof.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-red-500 font-bold select-none">✕</span>
+                <span>No isolated test harness; cannot verify if code actually compiles or passes edge cases.</span>
+              </li>
+            </ul>
+          </article>
+
+          <!-- Nereus Method Card -->
+          <article class="p-8 rounded-lg border border-default bg-card relative">
+            <div class="flex items-center gap-3 mb-6">
+              <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+              <h3 class="font-semibold text-lg">The Nereus Method</h3>
+            </div>
+            <ul class="space-y-4 text-sm text-muted">
+              <li class="flex items-start gap-3">
+                <span class="text-emerald-500 font-bold select-none">✓</span>
+                <span>Asks counter-questions targeting the exact compiler diagnostic or logic flaw you introduced.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-emerald-500 font-bold select-none">✓</span>
+                <span>Executes your code in a hermetic sandbox against hidden test assertions before rendering judgment.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-emerald-500 font-bold select-none">✓</span>
+                <span>Maintains an objective weakness report and adapts future katas to your diagnosed failure modes.</span>
+              </li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- The 4-Agent Automaton -->
+    <section id="agents" class="py-24 border-t border-default bg-[hsl(var(--secondary))]/30">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="max-w-2xl mb-16">
+          <h2 class="text-3xl font-bold tracking-tight mb-4">A deterministic learning lifecycle</h2>
+          <p class="text-muted leading-relaxed">
+            Instead of an unpredictable conversational loop, Nereus coordinates four specialized agents as an algebraic finite state machine.
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
+          <!-- Step 1 -->
+          <article class="p-6 rounded-lg border border-default bg-card">
+            <div class="font-mono text-xs text-muted mb-4">STAGE 01</div>
+            <h3 class="font-semibold text-base mb-2">Diagnostic Agent</h3>
+            <p class="text-sm text-muted leading-relaxed mb-4">
+              Probes syntax, memory semantics, and error handling through an initial adaptive quiz.
+            </p>
+            <div class="text-xs font-mono text-muted pt-3 border-t border-default">
+              Output: <span class="text-[hsl(var(--foreground))]">WeaknessReport</span>
+            </div>
+          </article>
+
+          <!-- Step 2 -->
+          <article class="p-6 rounded-lg border border-default bg-card">
+            <div class="font-mono text-xs text-muted mb-4">STAGE 02</div>
+            <h3 class="font-semibold text-base mb-2">Coach Agent</h3>
+            <p class="text-sm text-muted leading-relaxed mb-4">
+              Synthesizes your goals, deadlines, and diagnostic weaknesses into a dependency-ordered roadmap.
+            </p>
+            <div class="text-xs font-mono text-muted pt-3 border-t border-default">
+              Output: <span class="text-[hsl(var(--foreground))]">PrioritizedRoadmap</span>
+            </div>
+          </article>
+
+          <!-- Step 3 -->
+          <article class="p-6 rounded-lg border border-default bg-card">
+            <div class="font-mono text-xs text-muted mb-4">STAGE 03</div>
+            <h3 class="font-semibold text-base mb-2">Tutor Agent</h3>
+            <p class="text-sm text-muted leading-relaxed mb-4">
+              Delivers concise theory and assigns hands-on coding challenges for the active roadmap milestone.
+            </p>
+            <div class="text-xs font-mono text-muted pt-3 border-t border-default">
+              Output: <span class="text-[hsl(var(--foreground))]">KataChallenge</span>
+            </div>
+          </article>
+
+          <!-- Step 4 -->
+          <article class="p-6 rounded-lg border border-default bg-card">
+            <div class="font-mono text-xs text-muted mb-4">STAGE 04</div>
+            <h3 class="font-semibold text-base mb-2">Examiner Agent</h3>
+            <p class="text-sm text-muted leading-relaxed mb-4">
+              Runs your solution against sandbox assertions. Issues PASS to advance or RETRY with Socratic clues.
+            </p>
+            <div class="text-xs font-mono text-muted pt-3 border-t border-default">
+              Output: <span class="text-[hsl(var(--foreground))]">AssessmentScore</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Engineering Craft / Architecture -->
+    <section class="py-24 border-t border-default">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="max-w-2xl mb-16">
+          <h2 class="text-3xl font-bold tracking-tight mb-4">Engineered for speed and correctness</h2>
+          <p class="text-muted leading-relaxed">
+            Written in idiomatic Rust with zero runtime dependencies. Built to live in your terminal.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="p-6 rounded-lg border border-default bg-card">
+            <div class="font-mono text-xs text-muted mb-3">&lt; 5ms Cold Start</div>
+            <h3 class="font-semibold text-base mb-2">Single Static Binary</h3>
+            <p class="text-sm text-muted leading-relaxed">
+              No Python runtime, no virtualenv conflicts, no PyTorch overhead. A single binary that launches instantaneously with ~15MB RAM.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-lg border border-default bg-card">
+            <div class="font-mono text-xs text-muted mb-3">100% Hermetic</div>
+            <h3 class="font-semibold text-base mb-2">Offline-First Stub Engine</h3>
+            <p class="text-sm text-muted leading-relaxed">
+              Every agent, state machine transition, and evaluation harness runs locally with our deterministic stub client. Zero API costs for testing.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-lg border border-default bg-card">
+            <div class="font-mono text-xs text-muted mb-3">Algebraic FSM</div>
+            <h3 class="font-semibold text-base mb-2">Exhaustive State Transitions</h3>
+            <p class="text-sm text-muted leading-relaxed">
+              States and transitions are encoded as strict Rust enums. Invalid states cannot be represented or compiled, eliminating desync bugs.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quickstart / CTA -->
+    <section id="quickstart" class="py-24 border-t border-default bg-[hsl(var(--secondary))]/30">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="max-w-2xl mx-auto text-center space-y-6">
+          <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">Ready to master your craft?</h2>
+          <p class="text-muted text-base leading-relaxed">
+            Install Nereus in seconds via Cargo or clone the repository to run offline demo katas.
+          </p>
+
+          <div class="p-4 rounded-lg border border-default bg-[hsl(var(--background))] text-left font-mono text-xs space-y-2 max-w-lg mx-auto">
+            <div class="text-muted flex items-center justify-between">
+              <span>// Install latest release</span>
+              <span>v0.2.0</span>
+            </div>
+            <div class="text-[hsl(var(--foreground))] select-all">$ cargo install nereus</div>
+            <div class="text-muted pt-2 border-t border-default flex items-center justify-between">
+              <span>// Launch offline sandbox demo</span>
+              <span>Zero token cost</span>
+            </div>
+            <div class="text-[hsl(var(--foreground))] select-all">$ nereus --offline</div>
+          </div>
+
+          <div class="pt-4 flex items-center justify-center gap-4">
+            <a href="https://github.com/nereuslabs/nereus" target="_blank" rel="noopener" class="inline-flex items-center justify-center h-11 px-8 bg-primary text-primary-foreground text-sm font-medium rounded-md hover:opacity-90 transition-opacity">
+              Star on GitHub
+            </a>
+            <a href="https://github.com/nereuslabs/nereus/blob/main/docs/ARCHITECTURE.md" target="_blank" rel="noopener" class="inline-flex items-center justify-center h-11 px-8 border border-default text-sm font-medium rounded-md hover:bg-muted transition-colors">
+              Architecture Spec
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Minimal Footer -->
+  <footer class="border-t border-default bg-[hsl(var(--background))]">
+    <div class="max-w-5xl mx-auto px-6 py-12 flex flex-col sm:flex-row items-center justify-between gap-6 text-sm text-muted">
+      <div class="flex items-center gap-3">
+        <img src="assets/logo.svg" alt="Nereus Logo" class="w-5 h-5 rounded">
+        <span>© 2026 Nereus Labs. Licensed under the MIT License.</span>
+      </div>
+
+      <div class="flex items-center gap-6">
+        <a href="https://github.com/nereuslabs/nereus" target="_blank" rel="noopener" class="hover:text-[hsl(var(--foreground))] transition-colors">GitHub</a>
+        <a href="https://github.com/nereuslabs/nereus/blob/main/README.md" target="_blank" rel="noopener" class="hover:text-[hsl(var(--foreground))] transition-colors">Documentation</a>
+        <a href="https://github.com/nereuslabs" target="_blank" rel="noopener" class="hover:text-[hsl(var(--foreground))] transition-colors">Organization</a>
       </div>
     </div>
   </footer>
 
-  <!-- Main JS -->
-  <script src="js/main.js"></script>
+  <!-- Interactive Terminal Scripts -->
+  <script>
+    const KATAS = {
+      lifetimes: {
+        file: "src/concurrency/broadcast.rs",
+        code: `async fn broadcast_update(\n    tx: mpsc::Sender<Event>,\n    event: Event,\n) {\n    tokio::spawn(async move {\n        let _ = tx.send(event).await;\n    });\n    // Compiler Error:\n    let _ = tx.send(Event::Heartbeat).await;\n}`,
+        status: "FAILED [E0382]",
+        compiler: "error[E0382]: use of moved value: `tx`\n  --> src/concurrency/broadcast.rs:8:13\n   | value moved into closure here in previous iteration",
+        score: "RETRY · Score: 60/100",
+        prompt: "\"Notice that `tx` was captured by the spawned async move block by value. What happens when line 8 attempts to use the same handle? How does cloning a sender before moving satisfy the borrow checker?\""
+      },
+      tokio: {
+        file: "src/runtime/worker.rs",
+        code: `pub fn start_worker<T: Send>(mut rx: mpsc::Receiver<T>) {\n    // Compiler Error: missing 'static lifetime\n    tokio::spawn(async move {\n        while let Some(msg) = rx.recv().await {\n            process(&msg);\n        }\n    });\n}`,
+        status: "FAILED [E0310]",
+        compiler: "error[E0310]: the parameter type `T` may not live long enough\n  --> src/runtime/worker.rs:3:5\n   | the parameter type `T` must have an explicit `'static` lifetime",
+        score: "RETRY · Score: 68/100",
+        prompt: "\"Tokio's spawn function requires the returned future and its captures to be 'static + Send. Why does the compiler require 'static for a background task? How can you add a lifetime bound to T?\""
+      },
+      pinning: {
+        file: "src/stream/custom_poll.rs",
+        code: `impl<S: Stream> Stream for TimedStream<S> {\n    type Item = S::Item;\n    fn poll_next(self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Option<Self::Item>> {\n        // Sandbox assertion verified: pin projection safe\n        self.project().stream.poll_next(cx)\n    }\n}`,
+        status: "PASSED [14/14 tests]",
+        compiler: "test stream::tests::test_poll_next ... ok\ntest stream::tests::test_pin_projection ... ok\ntest result: ok. 14 passed; 0 failed",
+        score: "PASS · Score: 96/100",
+        prompt: "\"Topic Mastered. Pin projection correctly maintained structural invariants without invoking undefined behavior. Advancing roadmap to Stage 4: Async Cancellation Primitives.\""
+      }
+    };
+
+    function updateKata(key) {
+      const kata = KATAS[key];
+      if (!kata) return;
+
+      document.getElementById('code-snippet').textContent = kata.code;
+      document.getElementById('compiler-status').textContent = kata.status;
+      document.getElementById('compiler-output').textContent = kata.compiler;
+      document.getElementById('score-badge').textContent = kata.score;
+      document.getElementById('socratic-prompt').textContent = kata.prompt;
+      document.getElementById('tab-lang').textContent = kata.file;
+
+      const isPass = kata.status.includes('PASSED');
+      const compOut = document.getElementById('compiler-output');
+      const scoreBadge = document.getElementById('score-badge');
+      const compStatus = document.getElementById('compiler-status');
+
+      if (isPass) {
+        compOut.className = "p-3 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs leading-relaxed font-mono";
+        scoreBadge.className = "text-xs px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20";
+        compStatus.className = "text-emerald-500 font-semibold";
+      } else {
+        compOut.className = "p-3 rounded bg-red-500/10 border border-red-500/20 text-red-600 dark:text-red-400 text-xs leading-relaxed font-mono";
+        scoreBadge.className = "text-xs px-2.5 py-1 rounded-full bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 border border-yellow-500/20";
+        compStatus.className = "text-red-500 font-semibold";
+      }
+    }
+
+    // Tab buttons click handler
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => {
+          b.className = "tab-btn px-3 py-1.5 rounded-md text-muted hover:text-[hsl(var(--foreground))] transition-all";
+        });
+        btn.className = "tab-btn px-3 py-1.5 rounded-md font-medium bg-[hsl(var(--background))] text-[hsl(var(--foreground))] shadow-sm transition-all";
+        updateKata(btn.dataset.tab);
+      });
+    });
+
+    // Copy command button
+    const copyBtn = document.getElementById('copy-btn');
+    copyBtn.addEventListener('click', async () => {
+      const text = document.getElementById('cargo-cmd').textContent;
+      try {
+        await navigator.clipboard.writeText(text);
+        document.getElementById('copy-icon').classList.add('hidden');
+        document.getElementById('check-icon').classList.remove('hidden');
+        setTimeout(() => {
+          document.getElementById('copy-icon').classList.remove('hidden');
+          document.getElementById('check-icon').classList.add('hidden');
+        }, 2000);
+      } catch (err) {
+        console.error('Failed to copy', err);
+      }
+    });
+
+    // Initialize with first kata
+    updateKata('lifetimes');
+  </script>
 </body>
 </html>
