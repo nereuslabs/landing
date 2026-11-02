@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nereus — The Terminal AI Mentor That Doesn't Flatter You</title>
+  <meta name="description" content="Open-source terminal-first AI programming mentor written in Rust. Adaptive diagnostics, Socratic katas, and sandboxed test execution without leaking answers." />
+
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+</head>
+<body>
+
+  <!-- =================================================================
+     NAVIGATION
+     ========================================================================= -->
+  <header class="site-nav">
+    <div class="container nav-content">
+      <a href="#" class="nav-brand">
+        <img src="assets/logo.svg" alt="Nereus Logo" class="brand-logo">
+        Nereus
+        <span class="brand-version">v2.0 Rust</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#comparison">Socratic vs. AI</a>
+        <a href="#agents">4-Agent Lifecycle</a>
+        <a href="#architecture">Architecture</a>
+        <a href="https://github.com/nereuslabs/nereus" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="https://github.com/nereuslabs/nereus" target="_blank" rel="noopener" class="btn btn-secondary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+          Star on GitHub
+        </a>
+        <a href="#terminal-demo" class="btn btn-glow">Launch TUI</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- =================================================================
+     HERO SECTION
+     ========================================================================= -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="beacon-dot"></span>
+          The Socratic Lighthouse • Open Source Rust AI Mentor
+        </div>
+        <h1 class="hero-title">
+          The Terminal AI Mentor That <span>Doesn't Flatter You</span>
+        </h1>
+        <p class="hero-sub">
+          Replace passive flattering chatbots with an execution-driven learning automaton. Featuring adaptive diagnostics, Socratic katas, and sandboxed test verification with sub-millisecond cold starts.
+        </p>
+
+        <div class="hero-cta-group">
+          <div class="terminal-command-box">
+            <span>$</span>
+            <code id="command-text">cargo install nereus</code>
+            <button class="copy-btn" id="copy-command-btn" title="Copy to clipboard">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+            </button>
+          </div>
+          <a href="https://github.com/nereuslabs/nereus" target="_blank" rel="noopener" class="btn btn-primary">
+            View Source Code
+          </a>
+        </div>
+      </div>
+
+      <!-- INTERACTIVE TERMINAL WIDGET (TUI MOCKUP) -->
+      <div class="terminal-window" id="terminal-demo">
+        <div class="terminal-header">
+          <div class="terminal-dots">
+            <div class="dot dot-red"></div>
+            <div class="dot dot-yellow"></div>
+            <div class="dot dot-green"></div>
+          </div>
+          <div class="terminal-title">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" x2="20" y1="19" y2="19"/></svg>
+            nereus-tui cockpit — session_id: 0x82f9
+          </div>
+          <div class="terminal-version" style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-cyan);">[FSM: ACTIVE]</div>
+        </div>
+
+        <div class="terminal-tabs">
+          <button class="tui-tab active" data-tab="roadmap">1. Roadmap & Topics</button>
+          <button class="tui-tab" data-tab="katas">2. Tokio Katas</button>
+          <button class="tui-tab" data-tab="examiner">3. Socratic Examiner</button>
+          <button class="tui-tab" data-tab="state">4. Algebraic FSM</button>
+        </div>
+
+        <div class="terminal-body">
+          <!-- PANE 1: ROADMAP -->
+          <div class="tui-pane active" id="pane-roadmap">
+            <div class="tui-row">
+              <div class="tui-col">
+                <div class="tui-col-header">
+                  <span>Diagnostic Weakness Report</span>
+                  <span class="tui-badge badge-coral">Score: 68/100</span>
+                </div>
+                <div class="tui-list-item selected" data-topic="async-lifetimes">
+                  <span>async move block lifetime inference</span>
+                  <span class="tui-badge badge-coral">Weak</span>
+                </div>
+                <div class="tui-list-item" data-topic="fsm-states">
+                  <span>algebraic state machine invariants</span>
+                  <span class="tui-badge badge-yellow">Medium</span>
+                </div>
+                <div class="tui-list-item" data-topic="socratic-hints">
+                  <span>Pin projection & unsafe pointers</span>
+                  <span class="tui-badge badge-green">Mastered</span>
+                </div>
+              </div>
+              <div class="tui-col">
+                <div class="tui-col-header">
+                  <span>Coach Agent Strategy</span>
+                  <span>Goal-Oriented</span>
+                </div>
+                <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 12px; line-height: 1.5;">
+                  Roadmap dynamically reordered by weak areas. Diagnostic quiz results dictate the exact sequence of katas to prevent superficial learning.
+                </p>
+                <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-cyan);">
+                  → Next Milestone: Tokio Select Macro Pinning & Unpin Traits
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PANE 2: KATAS -->
+          <div class="tui-pane" id="pane-katas">
+            <div class="tui-row">
+              <div class="tui-col">
+                <div class="tui-col-header"><span>Kata #4: Async Broadcast Channel</span></div>
+                <pre style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-secondary); overflow-x: auto; line-height: 1.4;">
+async fn broadcast_state(
+    mut rx: tokio::sync::broadcast::Receiver&lt;State&gt;
+) -&gt; Result&lt;(), broadcast::error::RecvError&gt; {
+    while let Ok(val) = rx.recv().await {
+        // TODO: fix lifetime error in spawned future
+        tokio::spawn(async move {
+            process_update(val).await;
+        });
+    }
+    Ok()
+}</pre>
+              </div>
+            </div>
+          </div>
+
+          <!-- PANE 3: EXAMINER -->
+          <div class="tui-pane" id="pane-examiner">
+            <div class="tui-row">
+              <div class="tui-col">
+                <div class="tui-col-header">
+                  <span>Examiner Feedback Feed</span>
+                  <span class="tui-badge badge-green">Sandbox: Verified</span>
+                </div>
+                <p id="socratic-feedback-text" style="font-size: 0.9rem; color: var(--text-primary); line-height: 1.6; font-family: var(--font-mono);">
+                  Nereus Examiner: "You stored a reference with local lifetime in an async spawn block. What happens when the enclosing scope exits before the spawned future completes? Hint: consider 'static or moving ownership."
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- PANE 4: STATE FSM -->
+          <div class="tui-pane" id="pane-state">
+            <div class="tui-row">
+              <div class="tui-col">
+                <div class="tui-col-header"><span>Finite State Machine State Graph</span></div>
+                <div style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-secondary); line-height: 1.6;">
+                  [DiagnosticAgent] <span style="color: var(--accent-cyan);">---(WeaknessReport)---></span> [CoachAgent]<br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+                  [ExaminerAgent] <span style="color: var(--accent-coral);"><---(Socratic Hint)---</span> [TutorAgent]
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="terminal-footer-bar">
+            <div class="keybind-hint">
+              <kbd>Tab</kbd> Switch View • <kbd>j</kbd><kbd>k</kbd> Navigate • <kbd>Enter</kbd> Select • <kbd>Esc</kbd> Exit
+            </div>
+            <div style="color: var(--accent-cyan); font-family: var(--font-mono); font-size: 0.78rem;">
+              Offline Hermetic Mode Active
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================================================================
+     COMPARISON SECTION (Socratic vs Standard AI)
+     ========================================================================= -->
+  <section id="comparison">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Methodology</span>
+        <h2 class="section-title">The Socratic Method vs. Standard AI</h2>
+        <p class="section-desc">Why Nereus refuses to give you the copy-paste answer.</p>
+      </div>
+
+      <div class="comparison-grid">
+        <!-- Standard Chatbot -->
+        <div class="comparison-card other-card">
+          <h3>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+            Standard AI Chatbots
+          </h3>
+          <ul class="comparison-list">
+            <li class="comparison-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              <span>Instantly leaks the full code solution, inducing passive dependency.</span>
+            </li>
+            <li class="comparison-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              <span>Overly flattering tone ("Great job! You're a coding genius!").</span>
+            </li>
+            <li class="comparison-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              <span>No concept of adaptive diagnostics or persistent weakness tracking.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Nereus -->
+        <div class="comparison-card nereus-card">
+          <h3>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Nereus (Socratic Mastery)
+          </h3>
+          <ul class="comparison-list">
+            <li class="comparison-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Prompts deep comprehension with targeted Socratic counter-questions.</span>
+            </li>
+            <li class="comparison-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Rigorous execution-driven evaluation in isolated test sandboxes.</span>
+            </li>
+            <li class="comparison-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Algebraic Finite State Machine with persistent user session states.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================================================================
+     4-AGENT LIFECYCLE
+     ========================================================================= -->
+  <section id="agents">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Orchestration</span>
+        <h2 class="section-title">The 4-Agent Lifecycle</h2>
+        <p class="section-desc">A disciplined pipeline moving from vulnerability detection to verified mastery.</p>
+      </div>
+
+      <div class="lifecycle-grid">
+        <div class="lifecycle-card">
+          <span class="lifecycle-number">01 / DIAGNOSTIC</span>
+          <h3>Adaptive Quiz</h3>
+          <p>Generates an adaptive diagnostic quiz and evaluates answers to produce a precise <code style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--accent-cyan);">WeaknessReport</code>.</p>
+        </div>
+
+        <div class="lifecycle-card">
+          <span class="lifecycle-number">02 / COACH</span>
+          <h3>Goal Roadmap</h3>
+          <p>Orders your learning path by weak areas, building a dynamic, goal-oriented milestone tree tailored to your skill level.</p>
+        </div>
+
+        <div class="lifecycle-card">
+          <span class="lifecycle-number">03 / TUTOR</span>
+          <h3>Katas & Theory</h3>
+          <p>Delivers conceptual theory and hands-on coding katas designed to tackle specific architectural and language nuances.</p>
+        </div>
+
+        <div class="lifecycle-card">
+          <span class="lifecycle-number">04 / EXAMINER</span>
+          <h3>Sandboxed Verdict</h3>
+          <p>Runs sandboxed test executions and provides difficulty-scaled Socratic hints that prompt understanding without giving away code.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================================================================
+     ARCHITECTURE & ENGINEERING CRAFT
+     ========================================================================= -->
+  <section id="architecture">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Engineering Craft</span>
+        <h2 class="section-title">Built for Performance & Reliability</h2>
+        <p class="section-desc">Engineered in Rust with uncompromising attention to speed, safety, and offline resilience.</p>
+      </div>
+
+      <div class="arch-grid">
+        <div class="arch-card">
+          <div class="arch-icon">⚡</div>
+          <h3>Sub-Millisecond Startup</h3>
+          <p>Optimized Rust binary with zero heavy runtime overhead, ensuring lightning-fast cold starts in your terminal.</p>
+        </div>
+
+        <div class="arch-card">
+          <div class="arch-icon">🛡️</div>
+          <h3>Offline-First Hermetic CI</h3>
+          <p>Complete hermetic offline stub support guaranteeing CI/test safety without mandatory cloud API dependencies.</p>
+        </div>
+
+        <div class="arch-card">
+          <div class="arch-icon">⚙️</div>
+          <h3>Algebraic FSM State Graph</h3>
+          <p>Robust state management using strict finite state machines and Pydantic/Rust serde models for bulletproof sessions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================================================================
+     TERMINAL COCKPIT (TUI) FEATURE CALLOUT
+     ========================================================================= -->
+  <section>
+    <div class="container">
+      <div class="tui-feature-box">
+        <div class="tui-feature-content">
+          <span class="section-tag">Ratatui Terminal Cockpit</span>
+          <h3>Navigate Your Mentorship entirely via Keyboard</h3>
+          <p>
+            Stay in your flow state. Nereus features a gorgeous Ratatui TUI cockpit with vim-inspired keybindings, live diagnostic trees, and instant Socratic feedback feeds.
+          </p>
+          <div class="keybind-table">
+            <div class="keybind-row">
+              <span>Switch Roadmap / Katas</span>
+              <kbd>Tab</kbd>
+            </div>
+            <div class="keybind-row">
+              <span>Navigate Items</span>
+              <div><kbd>j</kbd> <kbd>k</kbd></div>
+            </div>
+            <div class="keybind-row">
+              <span>Execute / Select</span>
+              <kbd>Enter</kbd>
+            </div>
+          </div>
+        </div>
+        <div class="tui-mock-mini">
+          <div style="color: var(--accent-cyan); margin-bottom: 12px; font-weight: bold;">[nereus-tui v2.0.4]</div>
+          <div style="color: var(--text-secondary); line-height: 1.5;">
+            &gt; Initializing local sqlite session... OK<br>
+            &gt; Loading WeaknessReport for user 0x82...<br>
+            &gt; Spawning Diagnostic FSM node...<br>
+            <span style="color: var(--text-primary);">[Coach]: Roadmap locked. 3 katas queued.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================================================================
+     OPEN SOURCE & ROADMAP
+     ========================================================================= -->
+  <section class="opensource-section">
+    <div class="container">
+      <span class="section-tag">Open Source</span>
+      <h2 class="section-title">Free & Open Source under MIT</h2>
+      <p class="section-desc" style="max-width: 600px; margin: 0 auto 32px;">
+        Nereus is built in public by developers, for developers. Star the repository, contribute katas, or inspect the state graph.
+      </p>
+      <a href="https://github.com/nereuslabs/nereus" target="_blank" rel="noopener" class="btn btn-primary">
+        Explore nereuslabs/nereus on GitHub
+      </a>
+    </div>
+  </section>
+
+  <!-- =================================================================
+     FOOTER
+     ========================================================================= -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <div style="display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--text-primary);">
+          <img src="assets/logo.svg" alt="Nereus Logo" style="width: 24px; height: 24px; border-radius: 4px;">
+          Nereus Labs
+        </div>
+        <p>© 2026 Nereus Labs. Licensed under the MIT License.</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/nereuslabs/nereus" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/nereuslabs/nereus/blob/main/README.md" target="_blank" rel="noopener">Documentation</a>
+        <a href="https://github.com/nereuslabs/nereus/issues" target="_blank" rel="noopener">Issues</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main JS -->
+  <script src="js/main.js"></script>
+</body>
+</html>
