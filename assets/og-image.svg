@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <!-- Neo Brutalism Open Graph Image (1200x630) - All Sea Gamut -->
+  <defs>
+    <style>
+      @font-face {
+        font-family: 'HostGrotesk';
+        src: url('fonts/HostGrotesk-Bold.ttf') format('truetype');
+        font-weight: 700;
+      }
+      .bg { fill: #e3f1ee; }
+      .border-ink { stroke: #04202b; stroke-width: 6px; }
+      .shadow { fill: #04202b; }
+      .aqua-poster { fill: #5fd1c4; }
+      .ink-strip { fill: #04202b; }
+      .foam-strip { fill: #e3f1ee; }
+      .text-ink { fill: #04202b; font-family: 'HostGrotesk', system-ui, sans-serif; font-weight: 900; }
+      .text-aqua { fill: #5fd1c4; font-family: 'HostGrotesk', system-ui, sans-serif; font-weight: 900; }
+      .text-foam { fill: #e3f1ee; font-family: 'HostGrotesk', system-ui, sans-serif; font-weight: 900; }
+      .text-mono { font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-weight: 600; }
+    </style>
+  </defs>
+
+  <!-- Ground paper background -->
+  <rect width="1200" height="630" class="bg"/>
+
+  <!-- Outer ink framing border -->
+  <rect x="18" y="18" width="1164" height="594" fill="none" class="border-ink"/>
+
+  <!-- Solid offset shadow for central poster -->
+  <rect x="74" y="74" width="1070" height="500" class="shadow"/>
+
+  <!-- Main Aqua Poster Sheet -->
+  <rect x="64" y="64" width="1070" height="500" class="aqua-poster" stroke="#04202b" stroke-width="6"/>
+
+  <!-- Top metadata bar -->
+  <rect x="64" y="64" width="1070" height="60" fill="#9ccbdd" stroke="#04202b" stroke-width="6"/>
+  <text x="100" y="102" class="text-mono" font-size="20" fill="#04202b">NEREUS // TERMINAL AI MENTOR IN RUST</text>
+  <rect x="940" y="76" width="160" height="36" fill="#04202b"/>
+  <text x="965" y="100" class="text-mono" font-size="16" fill="#5fd1c4">v0.2 · ALPHA</text>
+
+  <!-- Overlapping Headline Strips -->
+  <!-- Strip 1: Abyss Ink -->
+  <g transform="translate(100, 160) rotate(-1)">
+    <rect x="0" y="0" width="580" height="90" class="ink-strip" stroke="#04202b" stroke-width="4"/>
+    <text x="25" y="65" class="text-aqua" font-size="64" letter-spacing="-2px">THE AI THAT</text>
+  </g>
+
+  <!-- Strip 2: Foam Paper -->
+  <g transform="translate(100, 260) rotate(0.8)">
+    <rect x="0" y="0" width="740" height="90" class="foam-strip" stroke="#04202b" stroke-width="4"/>
+    <text x="25" y="65" class="text-ink" font-size="64" letter-spacing="-2px">WON'T DO YOUR</text>
+  </g>
+
+  <!-- Strip 3: Ink Accent -->
+  <g transform="translate(100, 360) rotate(-0.5)">
+    <rect x="0" y="0" width="540" height="90" class="ink-strip" stroke="#04202b" stroke-width="4"/>
+    <text x="25" y="65" class="text-foam" font-size="64" letter-spacing="-2px">HOMEWORK.</text>
+  </g>
+
+  <!-- Subtitle paper slip -->
+  <rect x="100" y="475" width="800" height="55" fill="#f6fbfa" stroke="#04202b" stroke-width="4"/>
+  <text x="120" y="510" class="text-ink" font-size="20" font-weight="700">Finds what you don't know, gives you a roadmap, and asks the right question.</text>
+
+  <!-- Ocean Blue Arrow Tile (Interruption) -->
+  <g transform="translate(930, 200)">
+    <rect x="8" y="8" width="160" height="160" fill="#04202b"/>
+    <rect x="0" y="0" width="160" height="160" fill="#1b6ca8" stroke="#04202b" stroke-width="6"/>
+    <!-- Arrow glyph -->
+    <path d="M40 80 L120 80 M85 45 L120 80 L85 115" stroke="#f6fbfa" stroke-width="12" stroke-linecap="square" fill="none"/>
+  </g>
+
+  <!-- Pixel Lighthouse Silhouette in Ink Box -->
+  <g transform="translate(930, 390)">
+    <rect x="8" y="8" width="160" height="140" fill="#04202b"/>
+    <rect x="0" y="0" width="160" height="140" fill="#f6fbfa" stroke="#04202b" stroke-width="6"/>
+    <text x="25" y="75" class="text-ink" font-size="18" font-weight="900">MIT LICENSE</text>
+    <text x="25" y="105" class="text-mono" font-size="14" fill="#0a6b79">github.com/nereuslabs</text>
+  </g>
+</svg>
